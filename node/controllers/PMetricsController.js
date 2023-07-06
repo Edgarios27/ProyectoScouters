@@ -13,7 +13,7 @@ export const getPlayerMetrics = async (req, res) => {
   }
 };
 
-// Calcular la media de habilidades y la MediaGlobal y almacenarlas en la colección "player-metrics"
+// Calcular la media de Media de Skillsprincipales y la MediaGlobal y almacenarlas en la colección "player-metrics"
 export const calculatePlayerMetrics = async (id) => {
   try {
     console.log(id);
@@ -26,30 +26,37 @@ export const calculatePlayerMetrics = async (id) => {
     // Calcular la media de habilidades para cada jugador y la suma de todas las MediaInforme
     informs.forEach((inform) => {
       const playerId = inform.PlayerId.toString();
-      const habilidades = inform.habilidades[0];
+      const SkillsPrincipales = inform.SkillsPrincipales[0];
 
       if (!playerMetrics[playerId]) {
         playerMetrics[playerId] = {
-          Ofensiva: [],
-          Tecnica: [],
-          Movimiento: [],
-          Potencia: [],
-          Mentalidad: [],
-          Defensa: [],
+          ControlDelBalón: [],
+          Disparo: [],
+          Cabeza: [],
+          Asociación: [],
+          PieDerecho: [],
+          PieIzquierdo: [],
+          PasesLargos: [],
+          Dribling: [],
+          Reflejos: [],
+          Centros: [],
           totalMediaInforme: 0,
           informCount: 0,
         };
       }
 
-      playerMetrics[playerId].Ofensiva.push(habilidades.Ofensiva);
-      playerMetrics[playerId].Tecnica.push(habilidades.Tecnica);
-      playerMetrics[playerId].Movimiento.push(habilidades.Movimiento);
-      playerMetrics[playerId].Potencia.push(habilidades.Potencia);
-      playerMetrics[playerId].Mentalidad.push(habilidades.Mentalidad);
-      playerMetrics[playerId].Defensa.push(habilidades.Defensa);
+      playerMetrics[playerId].ControlDelBalón.push(SkillsPrincipales.ControlDelBalón);
+      playerMetrics[playerId].Disparo.push(SkillsPrincipales.Disparo);
+      playerMetrics[playerId].Cabeza.push(SkillsPrincipales.Cabeza);
+      playerMetrics[playerId].Asociación.push(SkillsPrincipales.Asociación);
+      playerMetrics[playerId].PieDerecho.push(SkillsPrincipales.PieDerecho);
+      playerMetrics[playerId].PieIzquierdo.push(SkillsPrincipales.PieIzquierdo);
+      playerMetrics[playerId].PasesLargos.push(SkillsPrincipales.PasesLargos);
+      playerMetrics[playerId].Dribling.push(SkillsPrincipales.Dribling);
+      playerMetrics[playerId].Reflejos.push(SkillsPrincipales.Reflejos);
+      playerMetrics[playerId].Centros.push(SkillsPrincipales.Centros);
 
       playerMetrics[playerId].totalMediaInforme += inform.MediaInforme;
-        // playerMetrics[playerId].totalMediaInforme = playerMetrics[playerId].totalMediaInforme + inform.MediaInforme;
       playerMetrics[playerId].informCount++;
       totalMediaInforme += inform.MediaInforme;
       totalInformes++;
@@ -59,12 +66,17 @@ export const calculatePlayerMetrics = async (id) => {
     for (let playerId in playerMetrics) {
       const playerMetric = playerMetrics[playerId];
 
-      const mediaOfensiva = calculateAverage(playerMetric.Ofensiva);
-      const mediaTecnica = calculateAverage(playerMetric.Tecnica);
-      const mediaMovimiento = calculateAverage(playerMetric.Movimiento);
-      const mediaPotencia = calculateAverage(playerMetric.Potencia);
-      const mediaMentalidad = calculateAverage(playerMetric.Mentalidad);
-      const mediaDefensa = calculateAverage(playerMetric.Defensa);
+      const mediaControlDelBalón = calculateAverage(playerMetric.ControlDelBalón);
+      const mediaDisparo = calculateAverage(playerMetric.Disparo);
+      const mediaCabeza = calculateAverage(playerMetric.Cabeza);
+      const mediaAsociación = calculateAverage(playerMetric.Asociación);
+      const mediaPieDerecho = calculateAverage(playerMetric.PieDerecho);
+      const mediaPieIzquierdo = calculateAverage(playerMetric.PieIzquierdo);
+      const mediaPasesLargos = calculateAverage(playerMetric.PasesLargos);
+      const mediaDribling = calculateAverage(playerMetric.Dribling);
+      const mediaReflejos = calculateAverage(playerMetric.Reflejos);
+      const mediaCentros = calculateAverage(playerMetric.Centros);
+
       const mediaGlobal = playerMetric.informCount > 0
         ? playerMetric.totalMediaInforme / playerMetric.informCount
         : 0;
@@ -73,24 +85,33 @@ export const calculatePlayerMetrics = async (id) => {
 
       if (existingPlayerMetric) {
         // Actualizar el documento existente con los nuevos valores
-        existingPlayerMetric.Ofensiva = mediaOfensiva;
-        existingPlayerMetric.Tecnica = mediaTecnica;
-        existingPlayerMetric.Movimiento = mediaMovimiento;
-        existingPlayerMetric.Potencia = mediaPotencia;
-        existingPlayerMetric.Mentalidad = mediaMentalidad;
-        existingPlayerMetric.Defensa = mediaDefensa;
+        existingPlayerMetric.ControlDelBalón = mediaControlDelBalón;
+        existingPlayerMetric.Disparo = mediaDisparo;
+        existingPlayerMetric.Cabeza = mediaCabeza;
+        existingPlayerMetric.Asociación = mediaAsociación;
+        existingPlayerMetric.PieDerecho = mediaPieDerecho;
+        existingPlayerMetric.PieIzquierdo = mediaPieIzquierdo;
+        existingPlayerMetric.PasesLargos = mediaPasesLargos;
+        existingPlayerMetric.Dribling = mediaDribling;
+        existingPlayerMetric.Reflejos = mediaReflejos;
+        existingPlayerMetric.Centros = mediaCentros;
         existingPlayerMetric.mediaGlobal = mediaGlobal;
         await existingPlayerMetric.save();
       } else {
         // Crear un nuevo documento si no existe uno con el mismo PlayerId
         const newPlayerMetric = new PmetricsModel({
           PlayerId: playerId,
-          Ofensiva: mediaOfensiva,
-          Tecnica: mediaTecnica,
-          Movimiento: mediaMovimiento,
-          Potencia: mediaPotencia,
-          Mentalidad: mediaMentalidad,
-          Defensa: mediaDefensa,
+          ControlDelBalón: mediaControlDelBalón,
+          Disparo: mediaDisparo,
+          Cabeza: mediaCabeza,
+          Asociación: mediaAsociación,
+          PieDerecho: mediaPieDerecho,
+          PieIzquierdo: mediaPieIzquierdo,
+          PasesLargos: mediaPasesLargos,
+          Dribling: mediaDribling,
+          Reflejos: mediaReflejos,
+          Centros: mediaCentros,
+          PasesLargos: mediaPasesLargos,
           mediaGlobal: mediaGlobal,
         });
 
@@ -122,6 +143,127 @@ export const calculatePlayerMetrics = async (id) => {
     console.error('Error al calcular las métricas de jugador:', error);
   }
 };
+
+// Calcular la media de Media de SkillsTacticas y la MediaGlobal y almacenarlas en la colección "player-metrics"
+export const calculateSkillsTacticas = async (id) => {
+  try {
+    console.log(id);
+    const informs = await InformModel.find({PlayerId: id}); // Obtener todos los informes
+    console.log(informs)
+    const playerMetrics = {};
+    let totalMediaInforme = 0; // Variable para almacenar la suma de todas las MediaInforme
+    let totalInformes = 0; // Variable para almacenar el número total de informes
+
+    // Calcular la media de habilidades para cada jugador y la suma de todas las MediaInforme
+    informs.forEach((inform) => {
+      const playerId = inform.PlayerId.toString();
+      const SkillsTacticas = inform.SkillsTacticas[0];
+
+      if (!playerMetrics[playerId]) {
+        playerMetrics[playerId] = {
+          Anticipación: [],
+          Colocación: [],
+          Concentración: [],
+          Contundencia: [],
+          Desdoble: [],
+          Desmarque: [],
+          Posicionamientos: [],
+          VisiónDeJuego: [],
+          totalMediaInforme: 0,
+          informCount: 0,
+        };
+      }
+
+      playerMetrics[playerId].Anticipación.push(SkillsTacticas.Anticipación);
+      playerMetrics[playerId].Colocación.push(SkillsTacticas.Colocación);
+      playerMetrics[playerId].Concentración.push(SkillsTacticas.Concentración);
+      playerMetrics[playerId].Contundencia.push(SkillsTacticas.Contundencia);
+      playerMetrics[playerId].Desdoble.push(SkillsTacticas.Desdoble);
+      playerMetrics[playerId].Desmarque.push(SkillsTacticas.Desmarque);
+      playerMetrics[playerId].Posicionamientos.push(SkillsTacticas.Posicionamientos);
+      playerMetrics[playerId].VisiónDeJuego.push(SkillsTacticas.VisiónDeJuego);
+
+      playerMetrics[playerId].totalMediaInforme += inform.MediaInforme;
+      playerMetrics[playerId].informCount++;
+      totalMediaInforme += inform.MediaInforme;
+      totalInformes++;
+    });
+
+    // Calcular la media de habilidades para cada jugador y actualizar la MediaGlobal
+    for (let playerId in playerMetrics) {
+      const playerMetric = playerMetrics[playerId];
+
+      const mediaAnticipación = calculateAverage(playerMetric.Anticipación);
+      const mediaColocación = calculateAverage(playerMetric.Colocación);
+      const mediaConcentración = calculateAverage(playerMetric.Concentración);
+      const mediaContundencia = calculateAverage(playerMetric.Contundencia);
+      const mediaDesdoble = calculateAverage(playerMetric.Desdoble);
+      const mediaDesmarque = calculateAverage(playerMetric.Desmarque);
+      const mediaPosicionamientos = calculateAverage(playerMetric.Posicionamientos);
+      const mediaVisiónDeJuego = calculateAverage(playerMetric.VisiónDeJuego);
+
+      const mediaGlobal = playerMetric.informCount > 0
+        ? playerMetric.totalMediaInforme / playerMetric.informCount
+        : 0;
+
+      const existingPlayerMetric = await PmetricsModel.findOne({ PlayerId: playerId });
+
+      if (existingPlayerMetric) {
+        // Actualizar el documento existente con los nuevos valores
+        existingPlayerMetric.Anticipación = mediaAnticipación;
+        existingPlayerMetric.Colocación = mediaColocación;
+        existingPlayerMetric.Concentración = mediaConcentración;
+        existingPlayerMetric.Contundencia = mediaContundencia;
+        existingPlayerMetric.Desdoble = mediaDesdoble;
+        existingPlayerMetric.Desmarque = mediaDesmarque;
+        existingPlayerMetric.Posicionamientos = mediaPosicionamientos;
+        existingPlayerMetric.VisiónDeJuego = mediaVisiónDeJuego;
+        existingPlayerMetric.mediaGlobal = mediaGlobal;
+        await existingPlayerMetric.save();
+      } else {
+        // Crear un nuevo documento si no existe uno con el mismo PlayerId
+        const newPlayerMetric = new PmetricsModel({
+          PlayerId: playerId,
+          Anticipación: mediaAnticipación,
+          Colocación: mediaColocación,
+          Concentración: mediaConcentración,
+          Contundencia: mediaContundencia,
+          Desdoble: mediaDesdoble,
+          Desmarque: mediaDesmarque,
+          Posicionamientos: mediaPosicionamientos,
+          VisiónDeJuego: mediaVisiónDeJuego,
+          mediaGlobal: mediaGlobal,
+        });
+
+        await newPlayerMetric.save();
+      }
+    }
+
+    // Calcular el rating de jugador
+    const globalMediaGlobal = totalInformes > 0
+      ? totalMediaInforme / totalInformes
+      : 0;
+    
+    console.log(globalMediaGlobal);
+
+    // Actualizar el campo Rating de todos los jugadores en la colección Players
+    // await PlayersModel.updateOne({id: id}, { Rating: globalMediaGlobal });
+    
+    try {
+      const MetricUpdated = await PlayersModel.updateOne({_id: id}, { Rating: globalMediaGlobal });
+      console.log(MetricUpdated)
+    } catch (error) {
+      console.log(error)
+    }
+
+    console.log('Cálculo de métricas de jugador completado');
+
+    // ... puedes realizar otras acciones o retornar algún valor si es necesario
+  } catch (error) {
+    console.error('Error al calcular las métricas de jugador:', error);
+  }
+};
+
 
 // Calcular el promedio de un arreglo de números
 const calculateAverage = (array) => {
