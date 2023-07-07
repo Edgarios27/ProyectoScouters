@@ -122,16 +122,14 @@ informSchema.pre("save", function (next) {
 
   const SkillsTacticas = this.SkillsTacticas[0]; // Accede a la primera habilidad del array SkillsTacticas
   const sumaSkillsTacticas =
-    SkillsTacticas.ControlDelBalón +
-    SkillsTacticas.Disparo +
-    SkillsTacticas.Cabeza +
-    SkillsTacticas.Asociación +
-    SkillsTacticas.PieDerecho +
-    SkillsTacticas.PieIzquierdo +
-    SkillsTacticas.PasesLargos +
-    SkillsTacticas.Dribling +
-    SkillsTacticas.Reflejos +
-    SkillsTacticas.Centros;
+    SkillsTacticas.Anticipación +
+    SkillsTacticas.Colocación +
+    SkillsTacticas.Concentración +
+    SkillsTacticas.Contundencia +
+    SkillsTacticas.Desdoble +
+    SkillsTacticas.Desmarque +
+    SkillsTacticas.Posicionamientos +
+    SkillsTacticas.VisiónDeJuego;
   this.MediaInforme = sumaSkillsTacticas / 8;
 
   const SkillsFísicas = this.SkillsFísicas[0]; // Accede a la primera habilidad del array SkillsTacticas
