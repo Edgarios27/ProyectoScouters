@@ -1,5 +1,5 @@
 import express from 'express';
-import { calculateSkillsFísicas, calculateSkillsPrincipales, calculateSkillsTacticas, getPlayerMetrics } from '../controllers/PMetricsController.js';
+import {  calculateSkillsFísicas, calculateSkillsPrincipales, calculateSkillsTacticas, getPlayerMetrics } from '../controllers/PMetricsController.js';
 
 const router = express.Router();
 

@@ -1,5 +1,5 @@
 import InformModel from '../models/InformModel.js';
-import PmetricsModel from '../models/PmetricsModel.js';
+import PmetricsModel from '../models/PMetricsModel.js';
 import PlayersModel from '../models/PlayersModel.js';
 
 // Obtener los datos de la colección "player-metrics"
@@ -264,7 +264,7 @@ export const calculateSkillsTacticas = async (id) => {
   }
 };
 
-// Calcular la media de Media de SkillsTacticas y la MediaGlobal y almacenarlas en la colección "player-metrics"
+// Calcular la media de Media de SkillsFísicas y la MediaGlobal y almacenarlas en la colección "player-metrics"
 export const calculateSkillsFísicas = async (id) => {
   try {
     console.log(id);
@@ -293,12 +293,12 @@ export const calculateSkillsFísicas = async (id) => {
         };
       }
 
-      playerMetrics[playerId].Agilidad.push(SkillsFísicas.Anticipación);
-      playerMetrics[playerId].Flexibilidad.push(SkillsFísicas.Colocación);
-      playerMetrics[playerId].Fuerza.push(SkillsFísicas.Concentración);
-      playerMetrics[playerId].Potencia.push(SkillsFísicas.Contundencia);
-      playerMetrics[playerId].Resistencia.push(SkillsFísicas.Desdoble);
-      playerMetrics[playerId].Salto.push(SkillsFísicas.Desmarque);
+      playerMetrics[playerId].Agilidad.push(SkillsFísicas.Agilidad);
+      playerMetrics[playerId].Flexibilidad.push(SkillsFísicas.Flexibilidad);
+      playerMetrics[playerId].Fuerza.push(SkillsFísicas.Fuerza);
+      playerMetrics[playerId].Potencia.push(SkillsFísicas.Potencia);
+      playerMetrics[playerId].Resistencia.push(SkillsFísicas.Resistencia);
+      playerMetrics[playerId].Salto.push(SkillsFísicas.Salto);
       playerMetrics[playerId].Velocidad.push(SkillsFísicas.Posicionamientos);
       playerMetrics[playerId].totalMediaInforme += inform.MediaInforme;
       playerMetrics[playerId].informCount++;
@@ -383,7 +383,3 @@ const calculateAverage = (array) => {
   const average = sum / array.length;
   return isNaN(average) ? 0 : average;
 };
-
-
-
-

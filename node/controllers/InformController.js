@@ -1,5 +1,5 @@
 import InformModel from '../models/InformModel.js';
-import { calculateSkillsFísicas, calculateSkillsPrincipales, calculateSkillsTacticas } from './PMetricsController.js';
+import { calculateSkillsFísicas, calculateSkillsPrincipales, calculateSkillsTacticas,  } from './PMetricsController.js';
 
 // Definir métodos para el CRUD 
 
@@ -12,7 +12,6 @@ export const getAllInforms = async (req, res) => {
     res.json({ message: error.message })
   }
 }
-
 
 // Mostrar un Informe concreto o informes asociados a ID de jugador
 export const getInform = async (req, res) => {
@@ -39,9 +38,7 @@ export const getInform = async (req, res) => {
   }
 };
 
-
-
-// Crear un Informe
+//Crear un Informe
 export const createInform = async (req, res) => {
   try {
 
@@ -89,5 +86,4 @@ export const deleteInform = async (req, res) => {
   } catch (error) {
     res.json({ message: error.message })
   }
-
 }

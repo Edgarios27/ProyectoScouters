@@ -88,6 +88,4 @@ const UpdateRegister = async (req, res) => {
     }
 }
 
-
-
 export { registerUser, loginUser, UpdateRegister };
