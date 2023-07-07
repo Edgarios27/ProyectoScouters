@@ -1,5 +1,5 @@
 import InformModel from '../models/InformModel.js';
-import { calculatePlayerMetrics } from './PMetricsController.js';
+import { calculateSkillsPrincipales } from './PMetricsController.js';
 
 // Definir métodos para el CRUD 
 
@@ -50,7 +50,7 @@ export const createInform = async (req, res) => {
     if (newInforme){
       // console.log(newInforme)
         // Después de crear el informe, calcular automáticamente la media de habilidades
-        await calculatePlayerMetrics(req.body.PlayerId);
+        await calculateSkillsPrincipales(req.body.PlayerId);
     }
   
     res.status(200).json({ message: "Informe creado correctamente" });

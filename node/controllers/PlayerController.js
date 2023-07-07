@@ -79,5 +79,4 @@ export const deletePlayer = async (req, res) => {
   } catch (error) {
     res.json({ message: error.message })
   }
-
 }

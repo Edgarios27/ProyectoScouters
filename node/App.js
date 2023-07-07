@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(bodyParser.json());
 app.use('/informs', InformRoutes)
 app.use('/players', PlayerRoutes)
-app.use('/player-metrics', PMetricsRoutes)
+app.use('/playermetrics', PMetricsRoutes)
 app.use('/users', UserRoutes)
 
 app.listen(8000, () =>{

@@ -14,7 +14,7 @@ export const getPlayerMetrics = async (req, res) => {
 };
 
 // Calcular la media de Media de Skillsprincipales y la MediaGlobal y almacenarlas en la colección "player-metrics"
-export const calculatePlayerMetrics = async (id) => {
+export const calculateSkillsPrincipales = async (id) => {
   try {
     console.log(id);
     const informs = await InformModel.find({PlayerId: id}); // Obtener todos los informes
@@ -264,6 +264,118 @@ export const calculateSkillsTacticas = async (id) => {
   }
 };
 
+// Calcular la media de Media de SkillsTacticas y la MediaGlobal y almacenarlas en la colección "player-metrics"
+export const calculateSkillsFísicas = async (id) => {
+  try {
+    console.log(id);
+    const informs = await InformModel.find({PlayerId: id}); // Obtener todos los informes
+    console.log(informs)
+    const playerMetrics = {};
+    let totalMediaInforme = 0; // Variable para almacenar la suma de todas las MediaInforme
+    let totalInformes = 0; // Variable para almacenar el número total de informes
+
+    // Calcular la media de habilidades para cada jugador y la suma de todas las MediaInforme
+    informs.forEach((inform) => {
+      const playerId = inform.PlayerId.toString();
+      const SkillsFísicas = inform.SkillsFísicas[0];
+
+      if (!playerMetrics[playerId]) {
+        playerMetrics[playerId] = {
+          Agilidad: [],
+          Flexibilidad: [],
+          Fuerza: [],
+          Potencia: [],
+          Resistencia: [],
+          Salto: [],
+          Velocidad: [],
+          totalMediaInforme: 0,
+          informCount: 0,
+        };
+      }
+
+      playerMetrics[playerId].Agilidad.push(SkillsFísicas.Anticipación);
+      playerMetrics[playerId].Flexibilidad.push(SkillsFísicas.Colocación);
+      playerMetrics[playerId].Fuerza.push(SkillsFísicas.Concentración);
+      playerMetrics[playerId].Potencia.push(SkillsFísicas.Contundencia);
+      playerMetrics[playerId].Resistencia.push(SkillsFísicas.Desdoble);
+      playerMetrics[playerId].Salto.push(SkillsFísicas.Desmarque);
+      playerMetrics[playerId].Velocidad.push(SkillsFísicas.Posicionamientos);
+      playerMetrics[playerId].totalMediaInforme += inform.MediaInforme;
+      playerMetrics[playerId].informCount++;
+      totalMediaInforme += inform.MediaInforme;
+      totalInformes++;
+    });
+
+    // Calcular la media de habilidades para cada jugador y actualizar la MediaGlobal
+    for (let playerId in playerMetrics) {
+      const playerMetric = playerMetrics[playerId];
+
+      const mediaAgilidad = calculateAverage(playerMetric.Agilidad);
+      const mediaFlexibilidad = calculateAverage(playerMetric.Flexibilidad);
+      const mediaFuerza = calculateAverage(playerMetric.Fuerza);
+      const mediaPotencia = calculateAverage(playerMetric.Potencia);
+      const mediaResistencia = calculateAverage(playerMetric.Resistencia);
+      const mediaSalto = calculateAverage(playerMetric.Salto);
+      const mediaVelocidad = calculateAverage(playerMetric.Velocidad);
+      const mediaGlobal = playerMetric.informCount > 0
+        ? playerMetric.totalMediaInforme / playerMetric.informCount
+        : 0;
+
+      const existingPlayerMetric = await PmetricsModel.findOne({ PlayerId: playerId });
+
+      if (existingPlayerMetric) {
+        // Actualizar el documento existente con los nuevos valores
+        existingPlayerMetric.Agilidad = mediaAgilidad;
+        existingPlayerMetric.Flexibilidad = mediaFlexibilidad;
+        existingPlayerMetric.Fuerza = mediaFuerza;
+        existingPlayerMetric.Potencia = mediaPotencia;
+        existingPlayerMetric.Resistencia = mediaResistencia;
+        existingPlayerMetric.Salto = mediaSalto;
+        existingPlayerMetric.Velocidad = mediaVelocidad;
+        existingPlayerMetric.mediaGlobal = mediaGlobal;
+        await existingPlayerMetric.save();
+      } else {
+        // Crear un nuevo documento si no existe uno con el mismo PlayerId
+        const newPlayerMetric = new PmetricsModel({
+          PlayerId: playerId,
+          Agilidad: mediaAgilidad,
+          Flexibilidad: mediaFlexibilidad,
+          Fuerza: mediaFuerza,
+          Potencia: mediaPotencia,
+          Resistencia: mediaResistencia,
+          Salto: mediaSalto,
+          Velocidad: mediaVelocidad,
+          mediaGlobal: mediaGlobal,
+        });
+
+        await newPlayerMetric.save();
+      }
+    }
+
+    // Calcular el rating de jugador
+    const globalMediaGlobal = totalInformes > 0
+      ? totalMediaInforme / totalInformes
+      : 0;
+    
+    console.log(globalMediaGlobal);
+
+    // Actualizar el campo Rating de todos los jugadores en la colección Players
+    // await PlayersModel.updateOne({id: id}, { Rating: globalMediaGlobal });
+    
+    try {
+      const MetricUpdated = await PlayersModel.updateOne({_id: id}, { Rating: globalMediaGlobal });
+      console.log(MetricUpdated)
+    } catch (error) {
+      console.log(error)
+    }
+
+    console.log('Cálculo de métricas de jugador completado');
+
+    // ... puedes realizar otras acciones o retornar algún valor si es necesario
+  } catch (error) {
+    console.error('Error al calcular las métricas de jugador:', error);
+  }
+};
 
 // Calcular el promedio de un arreglo de números
 const calculateAverage = (array) => {

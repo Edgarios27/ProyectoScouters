@@ -32,7 +32,19 @@ const pmetricsSchema = new Schema(
     Created_At: { type: Date, default: Date.now },
     mediaGlobal: { type: Number }
   },
-  { collection: 'playermetrics' }
+  {
+    PlayerId: { type: Schema.Types.ObjectId, ref: 'PlayersModel' },
+    Agilidad: { type: Number, required: true },
+    Flexibilidad: { type: Number, required: true },
+    Fuerza: { type: Number, required: true },
+    Potencia: { type: Number, required: true },
+    Resistencia: { type: Number, required: true },
+    Salto: { type: Number, required: true },
+    Velocidad: { type: Number, required: true },
+    Created_At: { type: Date, default: Date.now },
+    mediaGlobal: { type: Number }
+  },
+  { collection: 'playermetrics', versionKey: false }
 );
 
 // Redondear las medias de habilidades y la media global hacia números enteros

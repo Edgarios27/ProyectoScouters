@@ -1,46 +1,3 @@
-// import mongoose from 'mongoose';
-
-// const Schema = mongoose.Schema;
-
-// const informSchema = new Schema(
-//   {
-//     PlayerId: { type: Schema.Types.ObjectId, ref: 'PlayersModel', required: true },
-//     habilidades: [
-//       {
-//         Ofensiva: { type: Number, required: true },
-//         Tecnica: { type: Number, required: true },
-//         Movimiento: { type: Number, required: true },
-//         Potencia: { type: Number, required: true },
-//         Mentalidad: { type: Number, required: true },
-//         Defensa: { type: Number, required: true },
-//         Texto: { type: String, required: true }
-//       }
-//     ],
-//     MediaInforme: { type: Number },
-//     Created_At: {type: Date, default: Date.now}
-//   },
-//   { collection: 'informs' }
-// );
-
-// informSchema.pre('validate', function (next) {
-//   const habilidades = this.habilidades[0]; // Accede a la primera habilidad del array habilidades
-
-//   if (isNaN(habilidades.Ofensiva) || isNaN(habilidades.Tecnica)
-//     || isNaN(habilidades.Movimiento) || isNaN(habilidades.Potencia)
-//     || isNaN(habilidades.Mentalidad) || isNaN(habilidades.Defensa)) {
-//     return next(new Error('Los valores de habilidades deben ser numéricos'));
-//   }
-//   next();
-// });
-// informSchema.pre('save', function (next) {
-//   const habilidades = this.habilidades[0]; // Accede a la primera habilidad del array habilidades
-//   const sumaHabilidades = habilidades.Ofensiva + habilidades.Tecnica + habilidades.Movimiento + habilidades.Potencia + habilidades.Mentalidad + habilidades.Defensa;
-//   this.MediaInforme = sumaHabilidades / 6;
-//   next();
-// });
-
-// export default mongoose.model('InformModel', informSchema);
-
 import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
@@ -77,20 +34,20 @@ const informSchema = new Schema(
         Desmarque: { type: Number, required: true },
         Posicionamientos: { type: Number, required: true },
         VisiónDeJuego: { type: Number, required: true },
+        MediaInforme: { type: Number },
       },
     ],
-    // SkillsFísicas: [
-    //   {
-    //     Agilidad: { type: Number, required: true },
-    //     Flexibilidad: { type: Number, required: true },
-    //     Fuerza: { type: Number, required: true },
-    //     Potencia: { type: Number, required: true },
-    //     Resistencia: { type: Number, required:true},
-    //     Salto: { type: Number,required:true },
-    //     Velocidad: { type: String, required: true }
-
-    //   }
-    // ],
+    SkillsFísicas: [
+      {
+        Agilidad: { type: Number, required: true },
+        Flexibilidad: { type: Number, required: true },
+        Fuerza: { type: Number, required: true },
+        Potencia: { type: Number, required: true },
+        Resistencia: { type: Number, required: true },
+        Salto: { type: Number, required: true },
+        Velocidad: { type: Number, required: true }
+      }
+    ],
 
     Texto: { type: String, required: true },
     MediaInforme: { type: Number },
@@ -103,35 +60,47 @@ informSchema.pre("validate", function (next) {
   //SkillsPrincipales
   const SkillsPrincipales = this.SkillsPrincipales[0]; // Accede a la primera habilidad del array SkillsPrincipales
   if (
-    isNaN(SkillsPrincipales.ControlDelBalón) ||
-    isNaN(SkillsPrincipales.Asociación) ||
-    isNaN(SkillsPrincipales.Disparo) ||
-    isNaN(SkillsPrincipales.PieDerecho) ||
-    isNaN(SkillsPrincipales.PasesLargos) ||
-    isNaN(SkillsPrincipales.Dribling) ||
-    isNaN(SkillsPrincipales.Centros) ||
-    isNaN(SkillsPrincipales.Reflejos) ||
-    isNaN(SkillsPrincipales.Cabeza) ||
-    isNaN(SkillsPrincipales.PieIzquierdo)
+    typeof SkillsPrincipales.ControlDelBalón !== "number" ||
+    typeof SkillsPrincipales.Asociación !== "number" ||
+    typeof SkillsPrincipales.Disparo !== "number" ||
+    typeof SkillsPrincipales.PieDerecho !== "number" ||
+    typeof SkillsPrincipales.PasesLargos !== "number" ||
+    typeof SkillsPrincipales.Dribling !== "number" ||
+    typeof SkillsPrincipales.Centros !== "number" ||
+    typeof SkillsPrincipales.Reflejos !== "number" ||
+    typeof SkillsPrincipales.Cabeza !== "number" ||
+    typeof SkillsPrincipales.PieIzquierdo !== "number"
   ) {
-    return next(
-      new Error("Los valores de SkillsPrincipales deben ser numéricos")
-    );
+    return next(new Error("Los valores de SkillsPrincipales deben ser numéricos"));
   }
-  next();
+
   //SkillsTacticas
-  const SkillsTacticas = this.SkillsTacticas[0]; // Accede a la primera habilidad del array SkillsPrincipales
+  const SkillsTacticas = this.SkillsTacticas[0]; // Accede a la primera habilidad del array SkillsTacticas
   if (
-    isNaN(SkillsTacticas.Anticipación) ||
-    isNaN(SkillsTacticas.Desmarque) ||
-    isNaN(SkillsTacticas.Colocación) ||
-    isNaN(SkillsTacticas.Posicionamientos) ||
-    isNaN(SkillsTacticas.Concentración) ||
-    isNaN(SkillsTacticas.VisiónDeJuego) ||
-    isNaN(SkillsTacticas.Contundencia) ||
-    isNaN(SkillsTacticas.Desdoble)
+    typeof SkillsTacticas.Anticipación !== "number" ||
+    typeof SkillsTacticas.Desmarque !== "number" ||
+    typeof SkillsTacticas.Colocación !== "number" ||
+    typeof SkillsTacticas.Posicionamientos !== "number" ||
+    typeof SkillsTacticas.Concentración !== "number" ||
+    typeof SkillsTacticas.VisiónDeJuego !== "number" ||
+    typeof SkillsTacticas.Contundencia !== "number" ||
+    typeof SkillsTacticas.Desdoble !== "number"
   ) {
     return next(new Error("Los valores de SkillsTacticas deben ser numéricos"));
+  }
+
+  //SkillsFísicas
+  const SkillsFísicas = this.SkillsFísicas[0]; // Accede a la primera habilidad del array SkillsPrincipales
+  if (
+    typeof SkillsFísicas.Agilidad !== "number" ||
+    typeof SkillsFísicas.Flexibilidad !== "number" ||
+    typeof SkillsFísicas.Fuerza !== "number" ||
+    typeof SkillsFísicas.Potencia !== "number" ||
+    typeof SkillsFísicas.Resistencia !== "number" ||
+    typeof SkillsFísicas.Salto !== "number" ||
+    typeof SkillsFísicas.Velocidad !== "number"
+  ) {
+    return next(new Error("Los valores de SkillsPrincipales deben ser numéricos"));
   }
   next();
 });
@@ -150,7 +119,6 @@ informSchema.pre("save", function (next) {
     SkillsPrincipales.Reflejos +
     SkillsPrincipales.Centros;
   this.MediaInforme = sumaSkillsPrincipales / 10;
-  next();
 
   const SkillsTacticas = this.SkillsTacticas[0]; // Accede a la primera habilidad del array SkillsTacticas
   const sumaSkillsTacticas =
@@ -165,7 +133,18 @@ informSchema.pre("save", function (next) {
     SkillsTacticas.Reflejos +
     SkillsTacticas.Centros;
   this.MediaInforme = sumaSkillsTacticas / 8;
+
+  const SkillsFísicas = this.SkillsFísicas[0]; // Accede a la primera habilidad del array SkillsTacticas
+  const sumaSkillsFísicas =
+    SkillsFísicas.Agilidad +
+    SkillsFísicas.Flexibilidad +
+    SkillsFísicas.Fuerza +
+    SkillsFísicas.Potencia +
+    SkillsFísicas.Resistencia +
+    SkillsFísicas.Salto +
+    SkillsFísicas.Velocidad;
+    this.MediaInforme = sumaSkillsFísicas / 7;
   next();
 });
 
-export default mongoose.model("InformModel", informSchema);
+export default mongoose.model("InformModel", informSchema)

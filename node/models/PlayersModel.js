@@ -13,7 +13,7 @@ const PlayerSchema = new Schema(
     Rating: { type: Number, default: 5},
     Created_At: {type: Date, default: Date.now}
   },
-  { collection: 'players' }
+  { collection: 'players', versionKey: false }
 );
 
 export default mongoose.model('PlayersModel', PlayerSchema);
