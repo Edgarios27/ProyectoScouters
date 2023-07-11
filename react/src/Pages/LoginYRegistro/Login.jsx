@@ -28,8 +28,7 @@
 
 
 /*----------------------------------------CODIG BUENOOOOOOOOOOOOOOOOOOOOOOOOOOO------------*/
-
-import './register.css';
+import "./register.css";
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
@@ -109,7 +108,7 @@ export const Login = () => {
   };
 
   const inputStyle = {
-    backgroundColor: 'rgba(109, 96, 96, 0.498)',
+    backgroundColor: '#ffffff',
     height: '2.8rem',
   };
   return (
@@ -118,7 +117,7 @@ export const Login = () => {
         <header className="Header">
           <h1 className="headerTitle">INICIA SESIÓN</h1>
         </header>
-      <Grid container spacing={2}  style={{width:"90%",margin:"auto"}}>
+      <Grid container spacing={2}  style={{width:"75%",margin:"auto"}}>
           <Grid item xs={12} sm={12}>
             <TextField
               label="email"
@@ -142,7 +141,7 @@ export const Login = () => {
           </Grid>
       </Grid>
         
-          <Button onClick={handleLogin} style={{background: '#C7F55C',marginTop:"0rem",width:"15rem",}} className=".MuiButton-root">
+          <Button onClick={handleLogin} style={{background: '#C7F55C',marginTop:"0.5em"}} className=".MuiButton-root">
             INICIAR SESIÓN
           </Button>
           <div className="Register">

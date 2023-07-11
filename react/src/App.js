@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './App.css';
 import { Registro } from './Pages/LoginYRegistro/Registro';
@@ -17,7 +18,7 @@ export function App() {
       <BrowserRouter> 
           <Routes>
             {/* <Route path="/" element={<Navbar/>} /> */}
-            <Route path='/confirm/:token' element={<Login/>} />
+            <Route path='/login' element={<Login/>} />
             <Route path='/registro' element={<Registro/>} />
              <Route path='/confirm/:token'element={isLoggedIn ? <Login /> : <Navigate to='/login'/>} />
           </Routes>
