@@ -1,126 +1,91 @@
-// import React from 'react';
-// import './register.css'; // archivo CSS para los estilos
-
-//  export const Login = () => {
-//   return (
-//     <div className="login-container1">
-//       <form className="loginForm">
-//         <header className="Header">
-//           <h1 className="headerTitle">INICIA SESIÓN</h1>
-//         </header>
-       
-//         <input className="inputField" type="text" placeholder="Usuario" />
-//         <input className="inputField" type="password" placeholder="Contraseña" />
-//         <div className="Register">
-//           <div className="registerContent">         
-//             <a href="/" className="loginLink">Recupera tu contraseña</a>
-//           </div>
-//           <button className="registerButton">INICIAR SESIÓN</button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// };
-
-
-
-
-
-
-/*----------------------------------------CODIG BUENOOOOOOOOOOOOOOOOOOOOOOOOOOO------------*/
-import "./register.css";
-import { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from '../../AuthContext/AuthContext.js';
-import axios from 'axios';
-import {Button,TextField,Grid} from "@material-ui/core";
+import { AuthContext } from "../../AuthContext/AuthContext.js";
+import axios from "axios";
+import { Button, TextField, Grid } from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
 
 export const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
+  const matches = useMediaQuery("(min-width:600px)");
+
+  const [showLoader, setShowLoader] = useState(false);
+
   const handleLogin = async (event) => {
     event.preventDefault();
-    
-  
+
     try {
-      const response = await axios.post('http://localhost:8000/users/login', {
+      const response = await axios.post("http://localhost:8000/users/login", {
         email,
         password,
       });
 
-      // Verificar si el inicio de sesión fue exitoso
       if (response.status === 200) {
-        let timerInterval;
-        Swal.fire({
-          title: 'Iniciando sesión',
-          position: 'center',
-          timer: 2000,
-          timerProgressBar: true,
-          didOpen: () => {
-            Swal.showLoading();
-            timerInterval = setInterval(() => {}, 100);
-          },
-          willClose: () => {
-            clearInterval(timerInterval);
-          },
-        }).then((result) => {
-          if (result.dismiss === Swal.DismissReason.timer) {
-            console.log('I was closed by the timer');
-          }
-        });
-        setTimeout(() => {}, 5000);
+        setShowLoader(true);
 
-
-        // Establecer el nombre de usuario en el contexto de autenticación
-
-        // setUsername(name)
-        // setName(response.data.name);
-        login(); //función llamada que proviene del AuthContext
-
-        // Redirigir al usuario a la página de administración después de iniciar sesión
         setTimeout(() => {
-          navigate('/cuenta', {
+          navigate("/cuenta", {
             replace: true,
           });
-        }, 3000);
+        }, 3500);
       } else {
-        // El inicio de sesión no fue exitoso, mostrar mensaje de error o realizar acciones adicionales si es necesario
       }
     } catch (error) {
       Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        iconColor: 'black',
-        confirmButtonColor: '#FF4000',
-        title: 'Oops...',
+        position: "top-end",
+        icon: "warning",
+        color: "black",
+        backdrop: "true",
+        showConfirmButton: false,
+        iconColor: "black",
+        background: "rgba(255,255,255,0.5)",
         text: error.response.data.message,
-        timer: 5500,
-        toast: 'true',
-        // footer:  error.response.data.message                            ,
-        
+        timer: 2500,
+        toast: "true",
+        allowOutsideClick: "true",
+        showCloseButton: "true",
       });
       console.error(error);
     }
   };
 
+  useEffect(() => {
+    return () => {
+      setShowLoader(false);
+    };
+  }, []);
+
   const inputStyle = {
-    backgroundColor: '#ffffff',
-    height: '2.8rem',
+    backgroundColor: "rgba(255, 255, 255, 0.498)",
+    height: "2.8rem",
   };
+
   return (
-    <div className="login-container1">
+    <div className="login-container">
       <form onSubmit={handleLogin} className="loginForm">
-        <header className="Header">
-          <h1 className="headerTitle">INICIA SESIÓN</h1>
+        <header className="HeaderLogin">
+          <h1 className="headerTitleLogin">INICIAR SESIÓN</h1>
         </header>
-      <Grid container spacing={2}  style={{width:"75%",margin:"auto"}}>
-          <Grid item xs={12} sm={12}>
+        <Grid
+          className="gridLogin"
+          container
+          spacing={2}
+          style={{
+            width: "100%",
+            margin: "auto",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Grid item xs={12} sm={12} md={12} lg={8}>
             <TextField
-              label="email"
+              label="Email"
               variant="outlined"
               fullWidth
               value={email}
@@ -128,7 +93,7 @@ export const Login = () => {
               InputProps={{ style: inputStyle }}
             />
           </Grid>
-          <Grid item xs={12} sm={12}>
+          <Grid item xs={12} sm={12} md={12} lg={8}>
             <TextField
               label="Contraseña"
               variant="outlined"
@@ -139,68 +104,69 @@ export const Login = () => {
               InputProps={{ style: inputStyle }}
             />
           </Grid>
-      </Grid>
-        
-          <Button onClick={handleLogin} style={{background: '#C7F55C',marginTop:"0.5em"}} className=".MuiButton-root">
-            INICIAR SESIÓN
-          </Button>
-          <div className="Register">
-          <div className="loginContent">
-            <a href="/" className="loginLink">
-              Recupera tu contraseña
-            </a>
-          </div>
+
+          <Grid>
+            <Button
+              onClick={handleLogin}
+              style={{
+                background: " #C7F55C",
+                margin: "auto",
+                display: "flex",
+                width: matches ? "15rem" : "10rem",
+              }}
+            >
+              INICIAR SESIÓN
+            </Button>
+          </Grid>
+        </Grid>
+        <div className="loginContent">
+          <span className="link1">¿ Aún no tienes cuenta?</span>
+          <Link to="/registro" className="link1">
+            Registrate
+          </Link>
         </div>
       </form>
+      {showLoader && <span className="loader"></span>}
     </div>
   );
-}
-  
+};
 
-//*************************************ACABA EL CODIGO BUENOOOOOOOO************************************************************** */
+//*************************************---Estos son sweetALERTS//************************************************************** */
+//-----------------Estos son sweetALERTS//
 
+//   // Error en la solicitud de inicio de sesión
+//   Swal.fire({
+//     position: 'top-end',
+//     icon: 'error',
+//     title: 'Error al iniciar sesión',
+//     text: 'Credenciales inválidas',
+//     timer: 3000,
+//     toast: true,
+//   });
 
-     
-      
-        
-      
-      //   // Error en la solicitud de inicio de sesión
-      //   Swal.fire({
-      //     position: 'top-end',
-      //     icon: 'error',
-      //     title: 'Error al iniciar sesión',
-      //     text: 'Credenciales inválidas',
-      //     timer: 3000,
-      //     toast: true,
-      //   });
-    
+// Swal.fire({
+//   position: 'top-end',
+//   icon: 'error',
+//   title: 'Error al iniciar sesión',
+//   text: 'Hubo un error al iniciar sesión',
+//   timer: 3000,
+//   toast: true,
+// });
 
-      // Swal.fire({
-      //   position: 'top-end',
-      //   icon: 'error',
-      //   title: 'Error al iniciar sesión',
-      //   text: 'Hubo un error al iniciar sesión',
-      //   timer: 3000,
-      //   toast: true,
-      // });
+//   Swal.fire({
+//     position: 'top-end',
+//     icon: 'error',
+//     title: 'Error al iniciar sesión',
+//     text: 'Hubo un error en el inicio de sesión automático',
+//     timer: 3000,
+//     toast: true,
+//   });
 
-
-
-      //   Swal.fire({
-      //     position: 'top-end',
-      //     icon: 'error',
-      //     title: 'Error al iniciar sesión',
-      //     text: 'Hubo un error en el inicio de sesión automático',
-      //     timer: 3000,
-      //     toast: true,
-      //   });
-
-      // Swal.fire({
-      //   position: 'top-end',
-      //   icon: 'error',
-      //   title: 'Error al iniciar sesión',
-      //   text: 'Hubo un error en el inicio de sesión automático',
-      //   timer: 3000,
-      //   toast: true,
-      // });
-  
+// Swal.fire({
+//   position: 'top-end',
+//   icon: 'error',
+//   title: 'Error al iniciar sesión',
+//   text: 'Hubo un error en el inicio de sesión automático',
+//   timer: 3000,
+//   toast: true,
+// });

@@ -5,10 +5,19 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, TextField, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { Radio,RadioGroup, FormControlLabel,FormControl,FormLabel,FormHelperText,FormGroup,Checkbox,Typography} from "@mui/material";
-import { useMediaQuery } from '@material-ui/core';
-import 'animate.css/animate.min.css';
-
+import {
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  FormHelperText,
+  FormGroup,
+  Checkbox,
+  Typography,
+} from "@mui/material";
+import { useMediaQuery } from "@material-ui/core";
+import "animate.css/animate.min.css";
 
 export const Registro = () => {
   const [nombre, setNombre] = useState("");
@@ -23,30 +32,23 @@ export const Registro = () => {
   const [telefono, setTelefono] = useState("");
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const navigate = useNavigate();
-  const [isChecked, setIsChecked] = useState(false);//
- 
+  const [isChecked, setIsChecked] = useState(false); //
 
+  const matches = useMediaQuery("(min-width:600px)");
 
-
-  const matches = useMediaQuery('(min-width:600px)');
-  
   //funcion para cambiar de color el ckeckbox//
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked);
   };
-          
+
   //funcion para cambiar el color de los selectores//
   const handleChange = (event) => {
-   setCargo(event.target.value);
+    setCargo(event.target.value);
   };
 
-    //función para enviar el formulario al hacer click al boton registrar//
+  //función para enviar el formulario al hacer click al boton registrar//
   const handleRegister = async (event) => {
     event.preventDefault();
-    
- 
-
- 
 
     // Enviar solicitud de registro al backend
     try {
@@ -71,20 +73,19 @@ export const Registro = () => {
         setRegistrationSuccess("true");
         Swal.fire({
           position: "top-end",
-  
+
           icon: "success",
           title: "Registro realizado con éxito",
-          footer:"Revisa tu email para validar tu cuenta",
-           color:"black",
+          footer: "Revisa tu email para validar tu cuenta",
+          color: "black",
           showConfirmButton: false,
           timer: 3500,
           toast: "true",
         });
-         setTimeout(() => {
-          navigate('/login');
+        setTimeout(() => {
+          navigate("/login");
         }, 5000);
-      } 
-      else {
+      } else {
         setRegistrationSuccess(false);
       }
     } catch (error) {
@@ -94,54 +95,50 @@ export const Registro = () => {
         position: "top-end",
         icon: "error",
         iconColor: "black",
-        background:"rgba(255,255,255,0.5)",
+        background: "rgba(255,255,255,0.5)",
         showConfirmButton: false,
         title: `<h2 style="font-size:1rem; font-family: 'Oswald', sans-serif">${error.response.data.message}</h2>`,
         timer: 6500,
         toast: "true",
-       color:"black"
+        color: "white",
       });
       console.error("Error al registrar el usuario", error);
     }
   };
- 
- 
+
   const showAlert = () => {
     Swal.fire({
-      title: 'Politica de privacidad',
-  html: '<p>En Scouters, nos tomamos muy en serio la privacidad de nuestros usuarios y clientes. Por esta razón, hemos elaborado esta política de privacidad para informarle sobre cómo recopilamos, utilizamos, compartimos y protegemos su información personal.</p>' +
-    '<p>1. Información que recopilamos</p>' +
-    '<p>Recopilamos información personal que usted nos proporciona directamente, como su nombre, dirección de correo electrónico, número de teléfono y otra información que pueda ser necesaria para proporcionarle nuestros servicios. También podemos recopilar información automáticamente a través de cookies y otras tecnologías de seguimiento.</p>' +
-    '<p>2. Uso de la información</p>' +
-    '<p>Utilizamos la información que recopilamos para proporcionarle nuestros servicios, mejorar nuestros productos y servicios, personalizar su experiencia y comunicarnos con usted. También podemos utilizar su información para fines de marketing y publicidad, siempre y cuando tengamos su consentimiento.</p>' +
-    '<p>3. Compartir información</p>' +
-    '<p>No compartimos su información personal con terceros, excepto en los casos en que sea necesario para proporcionarle nuestros servicios o cuando tengamos su consentimiento. También podemos compartir su información en caso de que sea requerido por la ley o por una orden judicial.</p>' +
-    '<p>4. Protección de la información</p>' +
-    '<p>Tomamos medidas de seguridad razonables para proteger su información personal contra el acceso no autorizado, la divulgación, la alteración o la destrucción. Sin embargo, no podemos garantizar la seguridad absoluta de su información.</p>' +
-    '<p>5. Cambios en la política de privacidad</p>' +
-    '<p>Nos reservamos el derecho de modificar esta política de privacidad en cualquier momento. Cualquier cambio será efectivo inmediatamente después de su publicación en nuestro sitio web.</p>' +
-    '<p>Si tiene alguna pregunta o inquietud sobre nuestra política de privacidad, no dude en ponerse en contacto con nosotros.</p>',
+      title: "Politica de privacidad",
+      html:
+        "<p>En Scouters, nos tomamos muy en serio la privacidad de nuestros usuarios y clientes. Por esta razón, hemos elaborado esta política de privacidad para informarle sobre cómo recopilamos, utilizamos, compartimos y protegemos su información personal.</p>" +
+        "<p>1. Información que recopilamos</p>" +
+        "<p>Recopilamos información personal que usted nos proporciona directamente, como su nombre, dirección de correo electrónico, número de teléfono y otra información que pueda ser necesaria para proporcionarle nuestros servicios. También podemos recopilar información automáticamente a través de cookies y otras tecnologías de seguimiento.</p>" +
+        "<p>2. Uso de la información</p>" +
+        "<p>Utilizamos la información que recopilamos para proporcionarle nuestros servicios, mejorar nuestros productos y servicios, personalizar su experiencia y comunicarnos con usted. También podemos utilizar su información para fines de marketing y publicidad, siempre y cuando tengamos su consentimiento.</p>" +
+        "<p>3. Compartir información</p>" +
+        "<p>No compartimos su información personal con terceros, excepto en los casos en que sea necesario para proporcionarle nuestros servicios o cuando tengamos su consentimiento. También podemos compartir su información en caso de que sea requerido por la ley o por una orden judicial.</p>" +
+        "<p>4. Protección de la información</p>" +
+        "<p>Tomamos medidas de seguridad razonables para proteger su información personal contra el acceso no autorizado, la divulgación, la alteración o la destrucción. Sin embargo, no podemos garantizar la seguridad absoluta de su información.</p>" +
+        "<p>5. Cambios en la política de privacidad</p>" +
+        "<p>Nos reservamos el derecho de modificar esta política de privacidad en cualquier momento. Cualquier cambio será efectivo inmediatamente después de su publicación en nuestro sitio web.</p>" +
+        "<p>Si tiene alguna pregunta o inquietud sobre nuestra política de privacidad, no dude en ponerse en contacto con nosotros.</p>",
       showClass: {
-        popup: 'animate_animated animate_fadeInDown',
+        popup: "animate_animated animate_fadeInDown",
       },
       hideClass: {
-        popup: 'animate_animated animate_fadeOutUp',
+        popup: "animate_animated animate_fadeOutUp",
       },
     });
   };
 
-  
   const inputStyle = {
     backgroundColor: "rgba(255, 255, 255, 0.498)",
     height: "2.8rem",
-    helperText:{fontSize:"30px"},
+    helperText: { fontSize: "30px" },
     input: {
-      display: 'none',
-    }
-};
-  
-
-
+      display: "none",
+    },
+  };
 
   return (
     <div className="register-container">
@@ -150,14 +147,14 @@ export const Registro = () => {
           <h1 className="headerTitle">REGISTRATE</h1>
         </header>
 
-        <Grid 
+        <Grid
           container
           spacing={2}
           className="gridRegister"
-          style={{ width: "45%", margin: "auto",height:"10%" }}
+          style={{ width: "45%", margin: "auto", height: "10%" }}
           direction="row"
         >
-          <Grid  className="gridRegister" item xs={6} sm={6}>
+          <Grid className="gridRegister" item xs={6} sm={6}>
             <TextField
               id="nombre"
               label="Nombre"
@@ -168,7 +165,7 @@ export const Registro = () => {
               value={nombre}
               className="dark-input"
               onChange={(event) => setNombre(event.target.value)}
-              InputProps={{ style:  inputStyle }}
+              InputProps={{ style: inputStyle }}
             />
           </Grid>
           <Grid item xs={6} sm={6}>
@@ -185,7 +182,7 @@ export const Registro = () => {
           </Grid>
           <Grid item xs={12} sm={12}>
             <TextField
-              id="email" 
+              id="email"
               label="Email"
               variant="outlined"
               fullWidth
@@ -198,7 +195,7 @@ export const Registro = () => {
           </Grid>
           <Grid item xs={12} sm={12}>
             <TextField
-             id="contraseña"
+              id="contraseña"
               label="Contraseña"
               variant="outlined"
               type="password"
@@ -209,8 +206,7 @@ export const Registro = () => {
               InputProps={{ style: inputStyle }}
               helperText="Debe tener min 8 caracteres y contener al menos un número y un caracter especial"
               FormHelperTextProps={{
-                style: { color: 'white', fontSize: '12px',
-                fontWeight: "200 "}
+                style: { color: "white", fontSize: "12px", fontWeight: "200 " },
               }}
             />
           </Grid>
@@ -225,18 +221,17 @@ export const Registro = () => {
               onChange={(event) => setNif(event.target.value)}
               InputProps={{ style: inputStyle }}
             />
-            <input className="inputNif"
+            <input
+              className="inputNif"
               accept="image/*"
               id="dni-file"
               type="file"
             />
             <label htmlFor="dni-file">
-              <Button style={{color:"#C7F55C",
-         }} component="span">
+              <Button style={{ color: "#C7F55C" }} component="span">
                 Adjuntar NIF
               </Button>
-           </label>
-      
+            </label>
           </Grid>
           <Grid item xs={6} sm={6}>
             <TextField
@@ -259,13 +254,12 @@ export const Registro = () => {
               required
               value={pais}
               onChange={(event) => setPais(event.target.value)}
-              InputProps={{ style: inputStyle ,width:"30rem"}}
-           
+              InputProps={{ style: inputStyle, width: "30rem" }}
             />
           </Grid>
           <Grid item xs={6} sm={7}>
             <TextField
-             id="ciudad"
+              id="ciudad"
               label="Ciudad"
               variant="outlined"
               fullWidth
@@ -277,7 +271,7 @@ export const Registro = () => {
           </Grid>
           <Grid item xs={6} sm={12} noValidate>
             <TextField
-             id="telefono"
+              id="telefono"
               label="Teléfono"
               variant="outlined"
               fullWidth
@@ -287,76 +281,107 @@ export const Registro = () => {
               InputProps={{ style: inputStyle }}
             />
           </Grid>
-          <RadioGroup style={{display:"flex",justifyContent:"space-evenly",paddingTop:"10px",marginLeft: matches ? '5em' : '15px',}}
-          row
-          aria-label="rol"
-          name="rol"
-          value={cargo}
-          onChange={handleChange}
-        >
-          
-          <FormControlLabel
-            value="ojeador"
-            control={
-              <Radio
-                style={{
-                  color: cargo === 'ojeador' ? "#C7F55C" : '',
-                }}
-              />
-            }
-            label={
-              <Typography variant="span" style={{color: "rgba(255, 255, 255, 0.79)" }}>
-          Otros
-              </Typography>
-            }
-          />
-          
-          <FormControlLabel
-            value="otros"
-            control={
-              <Radio
-                style={{
-                  color: cargo === 'otros' ? "#C7F55C ": '',
-                }}
-              />
-              
-            }
-            label={
-              <Typography variant="span" style={{color: "rgba(255, 255, 255, 0.79)" }}>
-              Ojeador
-              </Typography>
-            }
-          />
-        </RadioGroup>
-          <FormControl  style={{display:"flex",justifyContent:"center",margin:"auto"}} >
-            <FormLabel 
-              component="legend"
-            ></FormLabel>
-    
-            <FormHelperText ></FormHelperText>
-          </FormControl>
-          <FormGroup style={{ display: 'flex', marginTop: '5px', marginLeft: 'auto' ,with:"14rem" }}>
-        <FormControlLabel
-          control={
-            <Checkbox
-            required
-              className="check"
-              checked={isChecked}
-              
-              onChange={handleCheckboxChange}
-              style={{
-                color: isChecked ? '#C7F55C' : '',
-                marginBottom: matches ? '10px' : '30px', }}
+          <RadioGroup
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              paddingTop: "10px",
+              marginLeft: matches ? "5em" : "15px",
+            }}
+            row
+            aria-label="rol"
+            name="rol"
+            value={cargo}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="ojeador"
+              control={
+                <Radio
+                  style={{
+                    color: cargo === "ojeador" ? "#C7F55C" : "",
+                  }}
+                />
+              }
+              label={
+                <Typography
+                  variant="span"
+                  style={{ color: "rgba(255, 255, 255, 0.79)" }}
+                >
+                  Otros
+                </Typography>
+              }
             />
-          }
-          label={
-            <Typography onClick={showAlert} variant="body1" style={{ fontSize: matches ? '16px' : '12px',color: "white",marginBottom: matches ? '10px' : '35px',height:"15px",textDecoration:"underline"}}>
-            Aceptar términos y condiciones
-          </Typography>
-          }
-        />
-      </FormGroup>
-          <Grid item xs={12} sm={12} style={{paddingTop:"1px"}}>
+
+            <FormControlLabel
+              value="otros"
+              control={
+                <Radio
+                  style={{
+                    color: cargo === "otros" ? "#C7F55C " : "",
+                  }}
+                />
+              }
+              label={
+                <Typography
+                  variant="span"
+                  style={{ color: "rgba(255, 255, 255, 0.79)" }}
+                >
+                  Ojeador
+                </Typography>
+              }
+            />
+          </RadioGroup>
+          <FormControl
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              margin: "auto",
+            }}
+          >
+            <FormLabel component="legend"></FormLabel>
+
+            <FormHelperText></FormHelperText>
+          </FormControl>
+          <FormGroup
+            style={{
+              display: "flex",
+              marginTop: "5px",
+              marginLeft: "auto",
+              with: "14rem",
+            }}
+          >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  required
+                  className="check"
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+                  style={{
+                    color: isChecked ? "#C7F55C" : "",
+                    marginBottom: matches ? "10px" : "30px",
+                  }}
+                />
+              }
+              label={
+                <Typography
+                  onClick={showAlert}
+                  variant="body1"
+                  style={{
+                    fontSize: matches ? "16px" : "12px",
+                    color: "white",
+                    marginBottom: matches ? "10px" : "35px",
+                    height: "15px",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Aceptar términos y condiciones
+                </Typography>
+              }
+            />
+          </FormGroup>
+          <Grid item xs={12} sm={12} style={{ paddingTop: "1px" }}>
             <Button
               type="submit"
               variant="contained"
@@ -365,9 +390,7 @@ export const Registro = () => {
                 width: "14em",
                 justifyContent: "center",
                 alignItems: "center",
-                height: matches ? '2.5rem' : '1.8rem'
-      
-                
+                height: matches ? "2.5rem" : "1.8rem",
               }}
               className="MuiButton"
             >
