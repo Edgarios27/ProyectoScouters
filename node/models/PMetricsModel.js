@@ -21,7 +21,6 @@ const pmetricsSchema = new Schema(
         Dribling: { type: Number, required: true },
         Reflejos: { type: Number, required: true },
         Centros: { type: Number, required: true },
-        Created_At: { type: Date, default: Date.now },
         mediaGlobal: { type: Number },
       },
     ],
@@ -35,7 +34,6 @@ const pmetricsSchema = new Schema(
         Desmarque: { type: Number, required: true },
         Posicionamientos: { type: Number, required: true },
         VisiónDeJuego: { type: Number, required: true },
-        Created_At: { type: Date, default: Date.now },
         mediaGlobal: { type: Number },
       },
     ],
@@ -48,10 +46,11 @@ const pmetricsSchema = new Schema(
         Resistencia: { type: Number, required: true },
         Salto: { type: Number, required: true },
         Velocidad: { type: Number, required: true },
-        Created_At: { type: Date, default: Date.now },
         mediaGlobal: { type: Number },
       },
     ],
+    Created_At: { type: Date, default: Date.now },
+    mediaGlobal: { type: Number },
   },
   { collection: 'playermetrics',versionKey: false }
 );
@@ -83,9 +82,9 @@ pmetricsSchema.pre('save', function (next) {
   this.Flexibilidad = Math.round(this.Flexibilidad);
   this.Fuerza = Math.round(this.Fuerza);
   this.Potencia = Math.round(this.Potencia);
-  this.Resistencia = Math.round(this.Desdoble);
-  this.Salto = Math.round(this.Desmarque);
-  this.Velocidad = Math.round(this.Posicionamientos);
+  this.Resistencia = Math.round(this.Resistencia);
+  this.Salto = Math.round(this.Salto);
+  this.Velocidad = Math.round(this.Velocidad);
   this.mediaGlobal = Math.round(this.mediaGlobal);
 
   next();
