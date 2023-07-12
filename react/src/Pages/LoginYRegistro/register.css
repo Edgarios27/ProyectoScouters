@@ -46,7 +46,7 @@
 .formRegister {
   text-align: center;
   background-color: rgba(54, 64, 76, 0.4);
-  height: 50rem;
+  height: 45rem;
   margin-bottom: 15px;
   width: 100%;
   border-radius: 2%;
@@ -59,14 +59,14 @@
   justify-content: center;
   gap: 12px;
   text-decoration: none;
-  margin-top: 27rem;
+  padding-bottom: 10rem;
 }
 
 .link {
   text-decoration: none;
   color: #ffffff;
   font-size: 14px;
-  margin-top: 7rem;
+  margin-top: 10rem;
 }
 
 .login-text {
@@ -282,7 +282,7 @@
     height: 48em;
   }
   .Account {
-    margin-top: 24rem;
+    margin-top: 25rem;
   }
   .HeaderRegister {
     height: 4rem;

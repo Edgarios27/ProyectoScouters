@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import "./register.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -141,8 +141,8 @@ export const Registro = () => {
   };
 
   return (
-    <div className="register-container">
-      <form className="formRegister" onSubmit={handleRegister}>
+    <div className="register-container" autocomplete="off">
+      <form className="formRegister" onSubmit={handleRegister} autocomplete="off">
         <header className="HeaderRegister">
           <h1 className="headerTitle">REGISTRATE</h1>
         </header>
@@ -153,6 +153,7 @@ export const Registro = () => {
           className="gridRegister"
           style={{ width: "45%", margin: "auto", height: "10%" }}
           direction="row"
+          autocomplete="off"
         >
           <Grid className="gridRegister" item xs={6} sm={6}>
             <TextField
@@ -166,6 +167,7 @@ export const Registro = () => {
               className="dark-input"
               onChange={(event) => setNombre(event.target.value)}
               InputProps={{ style: inputStyle }}
+              autocomplete="off"
             />
           </Grid>
           <Grid item xs={6} sm={6}>
@@ -408,3 +410,34 @@ export const Registro = () => {
     </div>
   );
 };
+
+// método para cargar la imagen
+
+const ImageUploader = () => {
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    fetch('http://localhost:8000/uploads', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  return (
+    <div>
+      <input type="file" onChange={handleFileChange} />
+    </div>
+  );
+};
+
+export default ImageUploader;

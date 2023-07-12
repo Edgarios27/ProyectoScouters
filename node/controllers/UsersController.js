@@ -72,7 +72,7 @@ export const registerUser = async (req, res) => {
         from: "alejandro.902019@hotmail.com",
         to: userCreate.email,
         subject: "Confirmación de correo electrónico",
-        text: `${userCreate.nombre},Recientemente te has registrado en nuestra página Scouters. Si no has sido tú quien se ha registrado, por favor ignora este mensaje. Si has sido tú, por favor haz clic en el siguiente enlace para activar tu cuenta:  http://localhost:8000/users/confirm/${userCreate.confirmationToken} '`,
+        text: `${userCreate.nombre},recientemente te has registrado en nuestra página Scouters. Si no has sido tú quien se ha registrado, por favor ignora este mensaje. Si has sido tú, por favor haz clic en el siguiente enlace para activar tu cuenta:  http://localhost:8000/users/confirm/${userCreate.confirmationToken} '`,
       };
 
       transporter.sendMail(mailOptions, (error, info) => {
