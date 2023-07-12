@@ -1,32 +1,28 @@
 
 import React from 'react';
 import './App.css';
-import { Registro } from './Pages/LoginYRegistro/Registro';
-import { Login } from './Pages/LoginYRegistro/Login';
-import { AuthContext } from './AuthContext/AuthContext';
-import { useContext } from 'react';
-import { BrowserRouter,Routes,Route,Navigate, } from 'react-router-dom';
-import { Error } from './Pages/LoginYRegistro/Error';
-
-
-
+// import Registro from './Components/registro_y_login/Registro';
+// import Login from './Components/registro_y_login/Login';
+// import RadarChart from './Components/Metricas/RadarChart';
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
+import {Landing} from './Pages/Landing/Landing'
+import { AvisoLegal } from './Pages/AvisoLegal/AvisoLegal';
+import { InterfazJugadores } from './Pages/InterfazJugadores/InterfazJugadores';
 
 
 export function App() {
-  const {isLoggedIn } = useContext(AuthContext);
-  return ( 
-   
-  
-      <BrowserRouter> 
-          <Routes>
-            {/* <Route path="/" element={<Navbar/>} /> */}
-            <Route path='/login' element={<Login/>} />
-            <Route path='/error' element={<Error/>} />
-            <Route path='/registro' element={<Registro/>} />
-             <Route path='/confirm/:token'element={isLoggedIn ? <Login /> : <Navigate to='/login'/>} />
-          </Routes>
+  return (
+   <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing/>}  />
+        <Route path="/AvisoLegal" element={<AvisoLegal/>}  />
+        <Route path="/InterfazJugadores" element={<InterfazJugadores/>}  />
+        {/* <Route path="/InterfazJugadores" element={<InterfazJugadores/>}  /> */}
+        {/* <Registro/>
+        <Login/>
+        <RadarChart/> */}
+      </Routes>
     </BrowserRouter>
-
   );
 }
 
