@@ -1,0 +1,108 @@
+/* COLORES DEL PROYECTO */
+:root {
+    --verde: #C7F55C;
+    --gris: #36404C;
+    --gris-ceniza: #292E3A;
+    --claro: #FFFFFF;
+    --oscuro: #201e1f;
+  }
+  
+  
+  .headerInforme {
+    background-image: url('https://img.freepik.com/foto-gratis/jugadores-futbol-accion-estadio-profesional_654080-1181.jpg?w=740&t=st=1689325810~exp=1689326410~hmac=04f896ef4c7e9f0d478bb678ca55ea3c71ddfe1fd6aa68c213b21b3e0c561417');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+   .header_close {
+    content: "";
+    display: flex;
+    position: absolute;
+    width: 120px;
+    height: 80px;
+    background-color: var(--verde);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+   
+  } 
+  
+.icon_close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+   }
+
+.css-i4bv87-MuiSvgIcon-root {
+    color: var(--oscuro);
+    width: 40%;
+    height: 40%;
+}
+
+.header_nav {
+    display:flex;
+    justify-content: space-around;
+    font-family: 'Oswald', sans-serif;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: large;
+    }
+
+.nav_menu-item {
+    color: var(--claro);
+    text-decoration: none;
+
+}
+  .informeOjeador {
+    text-transform: uppercase;
+    color: var(--claro);
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-style: x-large;
+    background-color: #36404c90;
+    letter-spacing: 5px;
+    padding-bottom: 20px;
+
+  }
+
+  h1 {
+    padding-top: 20px;
+  }
+
+  .horizontal-line {
+    width: 210vh; /* Ancho de la línea */
+    background-color: var(--claro); /* Color de la línea */
+    margin-left: 30px;
+  }
+  
+  /* .footer-container {
+    flex-grow: 1; /* Permite que el contenido crezca para llenar el espacio disponible */
+  /* } */ 
+  
+  /* .main-filters-cards {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 30px; 
+  } */
+  
+  
+  /* .main-cards{
+    margin-left: 0;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-gap: 20px;
+   
+  }
+  
+  .main-filters{
+    width: 400px;
+    position: static;
+  } */
+  
+  
