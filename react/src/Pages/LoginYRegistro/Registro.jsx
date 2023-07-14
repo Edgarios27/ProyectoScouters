@@ -18,8 +18,18 @@ import {
 } from "@mui/material";
 import { useMediaQuery } from "@material-ui/core";
 import "animate.css/animate.min.css";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export const Registro = () => {
+  
+  const [showPassword, setShowPassword] = useState(false);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleShowPasswordClick = () => {
+    setShowPassword(!showPassword);
+  };
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
