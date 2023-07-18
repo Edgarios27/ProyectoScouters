@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
+import HighlightOffOutlinedIcon from '@mui/icons-material/HighlightOffOutlined';
 
 export function HeaderInforme() {
     return (
@@ -10,7 +10,7 @@ export function HeaderInforme() {
         <div className="header_close">
           <div className="icon_close">
             <Link to="/otraPagina" className="close">
-              <CancelOutlinedIcon className="icon" />
+              <HighlightOffOutlinedIcon className="icon" />
             </Link>
           </div>
         </div>
@@ -24,19 +24,19 @@ export function HeaderInforme() {
              </div>
 
             <div className="header_nav">
-                <Link to="/?????" className="nav_menu-item">
+                <Link to="/otraPagina" className="nav_menu-item">
                     <span className="nav_skillsP"> Skills Principales</span>
                 </Link>
 
-                <Link to="/???????" className="nav_menu-item">
+                <Link to="/otraPagina" className="nav_menu-item">
                     <span className="nav_SkillsT">Skills Tácticas</span>
                 </Link>   
                
-                <Link to="/??????" className="nav_menu-item">
+                <Link to="/otraPagina" className="nav_menu-item">
                     <span className="nav_skillsF"> Skills Físicas</span>
                 </Link>
 
-                <Link to="/???????" className="nav_menu-item">
+                <Link to="/otraPagina" className="nav_menu-item">
                     <span className="nav_NotasF">Notas Finales</span>
                 </Link>   
             </div>
