@@ -1,8 +1,33 @@
 import InformModel from '../models/InformModel.js';
 import PlayersModel from '../models/PlayersModel.js';
+import  path  from 'path';
+import fs from 'fs';
 
 // Definir métodos para el CRUD 
 
+// Crear una ficha
+export const createPlayer = async (req, res) => {
+  try {
+    await PlayersModel.create(req.body)
+    res.status(200).json({
+      "message": "Ficha creada correctamente"
+    })
+  } catch (error) {
+    res.json({ message: error.message })
+  }
+}
+
+// Mostrar un player y una ficha
+export const getPlayer = async (req, res) => {
+  try {
+    const id = req.params.id
+    const player = await PlayersModel.findById({ _id: id })
+    const inform = await  InformModel.find({PlayerId: id})
+    res.json({ jugador: player,informes: inform })
+  } catch (error) {
+    res.json({ message: error.message })
+  }
+}
 // Mostrar TODAS las fichas
 export const getAllPlayers = async (req, res) => {
   try {
@@ -23,37 +48,6 @@ export const getAllPlayers = async (req, res) => {
     res.json({ message: error.message });
   }
 };
-
-// Mostrar UNA ficha
-export const getPlayer = async (req, res) => {
-  try {
-    const id = req.params.id
-    const player = await PlayersModel.findById({ _id: id })
-    const inform = await  InformModel.find({PlayerId: id})
-    res.json({ jugador: player,informes: inform })
-  } catch (error) {
-    res.json({ message: error.message })
-  }
-}
-
-
-
-// ...
-
-// Crear una ficha
-export const createPlayer = async (req, res) => {
-  try {
-    const player = await PlayersModel.create(req.body);
-
-    // ...
-
-    res.status(200).json({
-      "message": "Ficha creada correctamente"
-    });
-  } catch (error) {
-    res.json({ message: error.message });
-  }
-}
 
 // Actualizar una ficha
 export const updatePlayer = async (req, res) => {
@@ -97,5 +91,29 @@ export const deletePlayer = async (req, res) => {
   } catch (error) {
     res.json({ message: error.message })
   }
-
 }
+
+
+// Consumir foto-avatar
+
+export const avatar = (req, res) => {
+  //sacar el parametro de la url
+  const file = req.params.file;
+
+  // montar el path real de la imagen
+
+  const filepath = "./uploads/jugador/" + file;
+
+  //comprobar que existe la imagen
+
+  fs.stat(filepath, (error, exists) => {
+    if (!exists)
+      return res.status(404).send({
+        status: "error",
+        message: "no existe la imagen",
+      });
+
+    //devolver file
+    return res.sendFile(path.resolve(filepath));
+  });
+};

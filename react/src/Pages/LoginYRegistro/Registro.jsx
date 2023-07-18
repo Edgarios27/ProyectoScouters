@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { React, useState } from "react";
 import "./register.css";
 import Swal from "sweetalert2";
@@ -22,10 +23,29 @@ import "animate.css/animate.min.css";
 export const Registro = () => {
   const [nombre, setNombre] = useState("");
   const [apellidos, setApellidos] = useState("");
+=======
+import React, { useState } from "react";
+import { Grid, TextField, Button, Checkbox, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel } from "@mui/material";
+import "./register.css"; // Importa el archivo CSS personalizado
+import { useMediaQuery } from "@material-ui/core";
+import Radio from '@mui/material/Radio';
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+
+
+
+export function Registro() {
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [club, setClub] = useState("");
   const [nif, setNif] = useState("");
+<<<<<<< HEAD
   const [cargo, setCargo] = useState("");
   const [pais, setPais] = useState("");
   const [ciudad, setCiudad] = useState("");
@@ -47,6 +67,52 @@ export const Registro = () => {
   };
 
   //función para enviar el formulario al hacer click al boton registrar//
+=======
+  const [post, setPost] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [phone, setPhone] = useState("");
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [campo1Focused, setCampo1Focused] = useState(false);
+  const [selectedValue, setSelectedValue] = React.useState('a');
+
+
+
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+  const matches = useMediaQuery("(min-width:600px)");
+  const navigate = useNavigate();
+
+
+
+
+  //funcion para cambiar el color de los selectores//
+  const handleChange = (event) => {
+    setPost(event.target.value);
+  };
+
+  const inputStyle = {
+    backgroundColor: "rgba(255, 255, 255, 0.498)",
+    height: "2.8rem",
+    helperText: { fontSize: "30px" },
+    input: {
+      display: "none",
+    },
+  };
+
+
+  const handleFocus = () => {
+    setCampo1Focused(true);
+  };
+
+  const handleBlur = () => {
+    setCampo1Focused(false);
+  };
+
+
+
+
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
   const handleRegister = async (event) => {
     event.preventDefault();
 
@@ -55,6 +121,7 @@ export const Registro = () => {
       const response = await axios.post(
         "http://localhost:8000/users/register",
         {
+<<<<<<< HEAD
           nombre,
           apellidos,
           password,
@@ -65,6 +132,18 @@ export const Registro = () => {
           telefono,
           email,
           cargo,
+=======
+          name,
+          surname,
+          password,
+          nif,
+          club,
+          country,
+          city,
+          phone,
+          email,
+          post,
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
         }
       );
 
@@ -131,6 +210,7 @@ export const Registro = () => {
     });
   };
 
+<<<<<<< HEAD
   const inputStyle = {
     backgroundColor: "rgba(255, 255, 255, 0.498)",
     height: "2.8rem",
@@ -156,6 +236,25 @@ export const Registro = () => {
           autocomplete="off"
         >
           <Grid className="gridRegister" item xs={6} sm={6}>
+=======
+
+
+  return (
+    <div className="register-container2">
+      <form className="formRegister2" autoComplete="off" onSubmit={handleRegister}>
+        <header className="HeaderRegister2">
+          <h1 className="headerTitle2">REGISTRATE</h1>
+        </header>
+        <Grid
+          container
+          spacing={2}
+          className="gridRegister2"
+          style={{ width: "45%", margin: "auto" }}
+          direction="row"
+
+        >
+          <Grid item xs={6} sm={6}>
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
             <TextField
               id="nombre"
               label="Nombre"
@@ -163,12 +262,23 @@ export const Registro = () => {
               fullWidth
               required
               style={{ outlineOffset: "red " }}
+<<<<<<< HEAD
               value={nombre}
               className="dark-input"
               onChange={(event) => setNombre(event.target.value)}
               InputProps={{ style: inputStyle }}
               autocomplete="off"
             />
+=======
+              value={name}
+              className="dark-input"
+              onChange={(event) => setName(event.target.value)}
+              InputProps={{ style: inputStyle }}
+            />
+
+
+
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
           </Grid>
           <Grid item xs={6} sm={6}>
             <TextField
@@ -177,8 +287,13 @@ export const Registro = () => {
               variant="outlined"
               fullWidth
               required
+<<<<<<< HEAD
               value={apellidos}
               onChange={(event) => setApellidos(event.target.value)}
+=======
+              value={surname}
+              onChange={(event) => setSurname(event.target.value)}
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
               InputProps={{ style: inputStyle }}
             />
           </Grid>
@@ -193,7 +308,13 @@ export const Registro = () => {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               InputProps={{ style: inputStyle }}
+<<<<<<< HEAD
             />
+=======
+
+            />
+
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
           </Grid>
           <Grid item xs={12} sm={12}>
             <TextField
@@ -206,6 +327,10 @@ export const Registro = () => {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               InputProps={{ style: inputStyle }}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
               helperText="Debe tener min 8 caracteres y contener al menos un número y un caracter especial"
               FormHelperTextProps={{
                 style: { color: "white", fontSize: "12px", fontWeight: "200 " },
@@ -237,6 +362,10 @@ export const Registro = () => {
           </Grid>
           <Grid item xs={6} sm={6}>
             <TextField
+<<<<<<< HEAD
+=======
+
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
               id="club"
               label="Club"
               variant="outlined"
@@ -247,37 +376,60 @@ export const Registro = () => {
               InputProps={{ style: inputStyle }}
             />
           </Grid>
+<<<<<<< HEAD
           <Grid item xs={6} sm={5}>
+=======
+          <Grid item xs={6} sm={6}>
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
             <TextField
               id="pais"
               label="País"
               variant="outlined"
               fullWidth
               required
+<<<<<<< HEAD
               value={pais}
               onChange={(event) => setPais(event.target.value)}
               InputProps={{ style: inputStyle, width: "30rem" }}
             />
           </Grid>
           <Grid item xs={6} sm={7}>
+=======
+              value={country}
+              onChange={(event) => setCountry(event.target.value)}
+              InputProps={{ style: inputStyle, width: "30rem" }}
+            />
+          </Grid>
+          <Grid item xs={6} sm={6}>
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
             <TextField
               id="ciudad"
               label="Ciudad"
               variant="outlined"
               fullWidth
               required
+<<<<<<< HEAD
               value={ciudad}
               onChange={(event) => setCiudad(event.target.value)}
               InputProps={{ style: inputStyle }}
             />
           </Grid>
           <Grid item xs={6} sm={12} noValidate>
+=======
+              value={city}
+              onChange={(event) => setCity(event.target.value)}
+              InputProps={{ style: inputStyle }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={12}>
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
             <TextField
               id="telefono"
               label="Teléfono"
               variant="outlined"
               fullWidth
               required
+<<<<<<< HEAD
               value={telefono}
               onChange={(event) => setTelefono(event.target.value)}
               InputProps={{ style: inputStyle }}
@@ -403,14 +555,106 @@ export const Registro = () => {
         <div className="Account">
           <span className="link">¿Tienes cuenta?</span>
           <Link to="/login" className="link">
+=======
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+              InputProps={{ style: inputStyle }}
+            />
+          </Grid>
+          <Typography sx={{ marginLeft: matches ? '8.5em' : '2.5em', marginTop: "5px", color: "white", fontFamily: 'Oswald' }}>ELIGE TU PERFIL</Typography>
+
+
+
+
+          <FormLabel sx={{ display: "flex" }}></FormLabel>
+          <RadioGroup onChange={handleChange}
+            aria-labelledby="demo-radio-buttons-group-label"
+            name="radio-buttons-group"
+            sx={{ display: "flex", flexDirection: matches ? 'row' : 'column', marginLeft: matches ? '6em' : '4.5rem', }}
+          >
+            <FormControlLabel
+              value="Otro"
+              control={<Radio color="default" sx={{ '&.Mui-checked': { color: "rgba(179, 221, 82, 1)" }, color: post === 'jugador' ? "#C7F55C " : '' }} />}
+              label="Otro" sx={{ color: "white" }}
+            />
+            <FormControlLabel
+              value="Ojeador"
+              control={<Radio color="default" sx={{ '&.Mui-checked': { color: "rgba(179, 221, 82, 1)" }, color: post === 'jugador' ? "#C7F55C " : '' }} />}
+              label="Ojeador" sx={{ color: "white" }}
+
+            />
+          </RadioGroup>
+
+
+
+          <Grid sx={{ display: "flex", flexDirection: "row-reverse", margin: "auto" }}>
+            <Typography onClick={showAlert} variant="span" sx={{ color: "white", marginTop: matches ? '10px' : '10px', cursor: "pointer" }}>Aceptar términos y condiciones </Typography>
+            <Checkbox
+              required
+              {...label}
+              defaultChecked
+              color="success" // Cambia el color cuando el Checkbox está seleccionado
+              sx={{
+                color: '#000000e8',
+                '&.Mui-checked': {
+                  color: "#C7F55C", // Cambia el color del Checkbox seleccionado a verde
+
+                },
+              }}
+            />
+          </Grid>
+        </Grid>
+        <Button
+          type="submit"
+          variant="contained"
+          style={{
+            background: "#C7F55C",
+            width: "14em",
+            justifyContent: "center",
+            alignItems: "center",
+            height: matches ? "2.5rem" : "1.8rem",
+            color: "black",
+            className: "button_r",
+            marginLeft: matches ? '2em' : '2px',
+            marginTop: "20px"
+          }}
+        >
+          Enviar
+        </Button >
+        <div className="Account_R">
+          <span className="span">¿Tienes cuenta?</span>
+          <Link to="/login" className="linkToLogin">
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
             Iniciar sesión
           </Link>
         </div>
       </form>
     </div>
   );
-};
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
 // método para cargar la imagen
 
 const ImageUploader = () => {
@@ -441,3 +685,5 @@ const ImageUploader = () => {
 };
 
 export default ImageUploader;
+=======
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec

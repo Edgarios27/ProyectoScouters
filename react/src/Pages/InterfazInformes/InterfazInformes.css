@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap");
+
+
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec
 /* COLORES DEL PROYECTO */
 :root {
   --verde: #C7F55C;
@@ -7,6 +15,7 @@
   --oscuro: #201e1f;
 }
 
+<<<<<<< HEAD
 body {
   font-family: 'Oswald', sans-serif;
   color: var(--claro);
@@ -82,3 +91,84 @@ body {
   }
   
  
+=======
+
+.interfaz-nuevos-jugadores-container {
+  background-image: url('./img/EntrenadorFutbol.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  min-height: calc(100vh - 20px); /* Ajusta el valor del margen superior (20px) para dejar el espacio deseado */
+  padding-top: 20px; /* Ajusta el valor del padding superior según tus necesidades */
+}
+
+
+.interfaz-nuevos-jugadores-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.79);
+  z-index: -1;
+}
+
+
+.newfooter-container {
+  flex-grow: 1; /* Permite que el contenido crezca para llenar el espacio disponible */
+}
+
+.main-filtros-Cards {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 30px; 
+}
+
+
+.main-Cards{
+  margin-left: 0;
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-gap: 20px;
+ 
+}
+
+
+
+
+.opcion-switch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.opcion-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  background-color: rgba(54, 64, 76, 0.30);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 200;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Oswald';
+  text-transform: uppercase;
+}
+
+.opcion-button.active {
+  background-color: var(--verde);
+  color: var(--oscuro);
+  font-weight: 500;
+}
+
+>>>>>>> 154561e74719ee07d5ca7a5580c91b65ad8182ec

@@ -1,13 +1,15 @@
 import { useContext, useState, useEffect } from "react";
+import { AuthContext } from "../../AuthContext/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../AuthContext/AuthContext.js";
+// import { AuthContext } from "../../AuthContext/AuthContext.js";
 import axios from "axios";
 import { Button, TextField, Grid } from "@material-ui/core";
 import { useMediaQuery } from "@material-ui/core";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
+  const { username,setUsername } = useContext(AuthContext);
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
@@ -21,7 +23,7 @@ export const Login = () => {
 
     try {
       const response = await axios.post("http://localhost:8000/users/login", {
-        email,
+        name,
         password,
       });
 
@@ -29,10 +31,12 @@ export const Login = () => {
         setShowLoader(true);
 
         setTimeout(() => {
-          navigate("/cuenta", {
+          navigate("/InterfazJugadores", {
             replace: true,
           });
         }, 3500);
+        setUsername(name)
+        login()
       } else {
       }
     } catch (error) {
@@ -53,7 +57,7 @@ export const Login = () => {
       console.error(error);
     }
   };
-
+  // login();
   useEffect(() => {
     return () => {
       setShowLoader(false);
@@ -85,11 +89,11 @@ export const Login = () => {
         >
           <Grid item xs={12} sm={12} md={12} lg={8}>
             <TextField
-              label="Email"
+              label="Name"
               variant="outlined"
               fullWidth
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              value={name}
+              onChange={(event) => setName(event.target.value)}
               InputProps={{ style: inputStyle }}
             />
           </Grid>
@@ -130,43 +134,3 @@ export const Login = () => {
     </div>
   );
 };
-
-//*************************************---Estos son sweetALERTS//************************************************************** */
-//-----------------Estos son sweetALERTS//
-
-//   // Error en la solicitud de inicio de sesión
-//   Swal.fire({
-//     position: 'top-end',
-//     icon: 'error',
-//     title: 'Error al iniciar sesión',
-//     text: 'Credenciales inválidas',
-//     timer: 3000,
-//     toast: true,
-//   });
-
-// Swal.fire({
-//   position: 'top-end',
-//   icon: 'error',
-//   title: 'Error al iniciar sesión',
-//   text: 'Hubo un error al iniciar sesión',
-//   timer: 3000,
-//   toast: true,
-// });
-
-//   Swal.fire({
-//     position: 'top-end',
-//     icon: 'error',
-//     title: 'Error al iniciar sesión',
-//     text: 'Hubo un error en el inicio de sesión automático',
-//     timer: 3000,
-//     toast: true,
-//   });
-
-// Swal.fire({
-//   position: 'top-end',
-//   icon: 'error',
-//   title: 'Error al iniciar sesión',
-//   text: 'Hubo un error en el inicio de sesión automático',
-//   timer: 3000,
-//   toast: true,
-// });

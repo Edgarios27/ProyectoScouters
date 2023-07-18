@@ -10,6 +10,7 @@
   
 
 .header {
+    
     display: flex;
     align-items: center;
     padding: 20px;
@@ -18,6 +19,12 @@
     font-weight: 300;
     background: linear-gradient(to right, var(--verde) 40%, var(--oscuro) 40%);
 }
+
+
+.header__menu-item.active {
+    color: var(--verde);
+  }
+  
 
 .header__company {
     display: flex;

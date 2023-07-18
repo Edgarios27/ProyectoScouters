@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Rajdhani&display=swap");
-/* COLORES DEL PROYECTO */
 :root {
   --verde: #c7f55c;
   --gris: #36404c;
@@ -8,7 +7,130 @@
   --oscuro: #201e1f;
 }
 
-/*Css Register */
+.register-container2 {
+  display: flex;
+  background-image: url(./img/2.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.HeaderRegister2 {
+  display: flex;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: rgba(37, 38, 40, 0.979);
+  height: 4rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerTitle2 {
+  font-family: "Oswald";
+  display: flex;
+  text-align: center;
+  margin: auto;
+  color: #ffffff;
+  font-weight: 200;
+}
+
+.formRegister2 {
+  text-align: center;
+  background-color: rgba(54, 64, 76, 0.671);
+  height: 100%;
+  width: 100%;
+  border-radius: 2%;
+  margin: 0 auto;
+}
+
+.Account_R {
+  color: #f7f3f3;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-left: 25px;
+  margin-top: 5px;
+}
+.linkToLogin {
+  text-decoration: none;
+  color: #f7f3f3;
+}
+
+.register-text2 {
+  color: #ffffff;
+  margin-bottom: 5px;
+  text-align: center;
+  height: 10rem;
+}
+
+.MuiButton-root2:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em #000000;
+  transform: scale(0.97);
+}
+
+#demo-radio-buttons-group-label {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (min-width: 760px) {
+  .formRegister2 {
+    width: 48rem;
+    height: 45em;
+  }
+}
+
+/* Hide the default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Rajdhani&display=swap");
+
+:root {
+  --verde: #c7f55c;
+  --gris: #36404c;
+  --gris-ceniza: #292e3a;
+  --claro: #ffffff;
+  --oscuro: #201e1f;
+}
+
 .register-container {
   display: flex;
   background-image: url(./img/2.jpg);
@@ -27,8 +149,8 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background-color: rgba(37, 38, 40, 0.591);
-  /* font-size: xx-small; */
-  height: 4rem;
+
+  height: 2.2rem;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -46,10 +168,10 @@
 .formRegister {
   text-align: center;
   background-color: rgba(54, 64, 76, 0.4);
-  height: 45rem;
-  margin-bottom: 15px;
-  width: 100%;
+  height: 100%;
+  width: 40%;
   border-radius: 2%;
+  border: 2px red solid;
 }
 
 .Account {
@@ -59,14 +181,14 @@
   justify-content: center;
   gap: 12px;
   text-decoration: none;
-  padding-bottom: 10rem;
+  margin-top: 30rem;
 }
 
 .link {
   text-decoration: none;
   color: #ffffff;
   font-size: 14px;
-  margin-top: 10rem;
+  margin-top: 7rem;
 }
 
 .login-text {
@@ -76,25 +198,12 @@
   height: 10rem;
 }
 
-.inputBox span {
-  position: absolute;
-  left: 0;
-  padding-left: 4rem;
-  pointer-events: none;
-  font-size: 1em;
-  transition: 0.4s cubic-bezier(0.05, 0.81, 0, 0.93);
-  color: #ffffff;
-  letter-spacing: 0.1em;
-}
-
 .MuiButton-root:active {
   transform: translate(0.05em, 0.05em);
   box-shadow: 0.05em 0.05em #000000;
   transform: scale(0.97);
 }
-/*Fin Css Register */
 
-/*Css Login */
 .login-container {
   display: flex;
   background-image: url("./img/1.jpg");
@@ -113,7 +222,6 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background-color: rgba(37, 38, 40, 0.591);
-  /* font-size: xx-small; */
   text-align: center;
   font-family: "Oswald";
   justify-content: center;
@@ -125,12 +233,13 @@
   margin-top: 2rem;
   text-align: center;
   color: #ffffff;
+  font-size: 28px;
   font-weight: 200;
 }
 
 .loginForm {
-  width: 40%;
-  height: 20rem;
+  width: 45%;
+  height: 18rem;
   text-align: center;
   background-color: rgba(54, 64, 76, 0.4);
   border-radius: 5px;
@@ -166,124 +275,12 @@
   height: 10rem;
 }
 
-.input-focused .MuiOutlinedInput-notchedOutline {
-  border: none;
-}
-
-.inputBox span {
-  position: absolute;
-  left: 0;
-  padding-left: 4rem;
-  pointer-events: none;
-  font-size: 1em;
-  transition: 0.4s cubic-bezier(0.05, 0.81, 0, 0.93);
-  color: #a8a4a4;
-  letter-spacing: 0.1em;
-}
-/*Fin css Login*/
-
-/*Pagina expiración de Token -Error*/
-.error-container {
-  display: flex;
-  background-image: url("https://images.unsplash.com/photo-1490696809909-71f5f1fd23e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.HeaderError {
-  display: flex;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  background-color: rgba(37, 38, 40, 0.591);
-  font-size: xx-small;
-  text-align: center;
-  height: 50%;
-  justify-content: center;
-  align-items: center;
-}
-
-.headerTitleError {
-  display: flex;
-  margin-top: 2rem;
-  text-align: center;
-  color: #ffffff;
-  font-weight: 200;
-}
-
-.errorForm {
-  width: 70%;
-  height: 20rem;
-  text-align: center;
-  background-color: #50507c64;
-  border-radius: 5px;
-}
-.errorContent {
-  color: #ffffff;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  gap: 15px;
-}
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #433d5b;
-  border: none;
-  color: #ffffff;
-  text-align: center;
-  font-size: 17px;
-  padding: 16px;
-  width: 130px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: "»";
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -15px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 15px;
-}
-.button:hover {
-  background-color: rgb(0, 0, 0);
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-/* Media query Register-Login-Error*/
 @media (min-width: 760px) {
   .formRegister {
     width: 46rem;
-    height: 48em;
+    height: 53em;
   }
-  .Account {
-    margin-top: 25rem;
-  }
+
   .HeaderRegister {
     height: 4rem;
     margin-bottom: 20px;
@@ -291,8 +288,10 @@
   .headerTitle {
     margin-top: 1rem;
   }
+  .headerTitleLogin {
+    font-size: 30px;
+  }
 
-  /* login  */
   .loginForm {
     width: 35%;
   }
@@ -303,18 +302,7 @@
   .link1 {
     font-size: 14px;
   }
-
-  /* Error  */
-  .errorForm {
-    width: 40%;
-    height: 20rem;
-    text-align: center;
-    background-color: #50507c64;
-    border-radius: 5px;
-  }
 }
-
-/*Loading-spinner*/
 
 .loader {
   font-size: 10px;
@@ -401,4 +389,136 @@
       -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5),
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
+}
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 40px;
+}
+
+.checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox-circle {
+  position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #aaa;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.checkbox input[type="checkbox"]:checked ~ .checkbox-circle {
+  background: #bcf141;
+  border-color: #000000;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.checkbox input[type="checkbox"]:checked ~ .checkbox-circle .checkmark {
+  opacity: 1;
+}
+
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  -webkit-transition: stroke-dashoffset 0.3s;
+  transition: stroke-dashoffset 0.3s;
+}
+
+.checkbox input[type="checkbox"]:checked ~ .checkbox-circle .checkmark-circle {
+  stroke-dashoffset: 0;
+}
+
+.checkmark-kick {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  -webkit-transition: stroke-dashoffset 0.3s;
+  transition: stroke-dashoffset 0.3s;
+}
+
+.checkbox input[type="checkbox"]:checked ~ .checkbox-circle .checkmark-kick {
+  stroke-dashoffset: 0;
+}
+.imagen {
+  width: 90px;
+  border-radius: 50%;
+}
+
+/* tokenExpired PAGE CSS */
+
+.tokenExpired {
+  display: flex;
+  background-image: url("https://images.unsplash.com/photo-1577223625816-7546f13df25d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.HeadertokenExpired {
+  display: flex;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: rgba(37, 38, 40, 0.591);
+  text-align: center;
+  font-family: "Oswald";
+  justify-content: center;
+  align-items: center;
+}
+
+.HeadertokenExpired {
+  display: flex;
+  margin-top: 2rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+.tokenExpiredForm {
+  width: 25%;
+  font-family: "Oswald";
+  height: 18rem;
+  text-align: center;
+  background-color: rgba(54, 64, 76, 0.4);
+  border-radius: 5px;
+  position: absolute;
+}
+.tokenExpired-container {
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  gap: 15px;
+}
+
+.ButtoN:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em #000000;
+  transform: scale(0.97);
 }

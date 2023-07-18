@@ -14,7 +14,6 @@ export const getAllInforms = async (req, res) => {
   }
 }
 
-
 // Mostrar un Informe concreto o informes asociados a ID de jugador
 export const getInform = async (req, res) => {
   try {
@@ -40,20 +39,17 @@ export const getInform = async (req, res) => {
   }
 };
 
-
-
-// Crear un Informe
+//Crear un Informe
 export const createInform = async (req, res) => {
   try {
+    console.log(req.body)
+    const newInforme = await InformModel.create(req.body);
 
-  const newInforme = await InformModel.create(req.body);
-
-    if (newInforme){
+    if (newInforme) {
       // console.log(newInforme)
-        // Después de crear el informe, calcular automáticamente la media de habilidades
-        await calculatePlayerMetrics(req.body.PlayerId);
+      // Después de crear el informe, calcular automáticamente la media de habilidades
+      await calculatePlayerMetrics(req.body.PlayerId);
     }
-  
     res.status(200).json({ message: "Informe creado correctamente" });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -88,5 +84,4 @@ export const deleteInform = async (req, res) => {
   } catch (error) {
     res.json({ message: error.message })
   }
-
 }
