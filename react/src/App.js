@@ -7,8 +7,6 @@ import { Login } from './Pages/LoginYRegistro/Login';
 import { Registro } from './Pages/LoginYRegistro/Registro';
 import { AvisoLegal } from './Pages/AvisoLegal/AvisoLegal';
 import { InterfazJugadores } from './Pages/InterfazJugadores/InterfazJugadores';
-import { Login } from './Pages/LoginYRegistro/Login';
-import { Registro } from './Pages/LoginYRegistro/Registro';
 import { InterfazInformes } from './Pages/InterfazInformes/InterfazInformes';
 import { NuevaFicha } from './Pages/NuevaFicha/NuevaFicha';
 import { FichaJugador } from './Pages/FichaJugador/FichaJugador';
