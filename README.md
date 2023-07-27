@@ -51,7 +51,7 @@ Scouters es una plataforma para scouts de fútbol. Sirve para generar informes e
 ## 👾 Desarrolladores
 ***
 - [Daniel Zafra](https://github.com/Danizetaeme) Developer
-- [Alejandro Mitjans]() Developer
-- [Edgar Ríos]() Developer
+- [Alejandro Mitjans](https://github.com/Alejandro9011) Developer
+- [Edgar Ríos](https://github.com/Edgarios27) Developer
 - [Pablo Ledezma]() Developer
 - [Miguel Ángel Seiz](https://github.com/maseiz) Developer
