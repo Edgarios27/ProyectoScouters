@@ -11,7 +11,7 @@ Scouters es una plataforma para scouts de fútbol. Sirve para generar informes e
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/>
 <img src="https://img.icons8.com/?size=1x&id=t5K2CR8feVdX&format=gif" alt="react" width="40" heigth="40"/> 
 <img src="https://miro.medium.com/v2/resize:fit:450/format:webp/1*EZUp-bxiIJqwH3Cy4nkJ4A.jpeg" alt="node" width="40" heigth="40"/>
-<img src="https://cdn.icon-icons.com/icons2/2415/PNG/96/mongodb_original_wordmark_logo_icon_146425.png" alt="mongodb" width="40" heigth="40"/> </div>
+<img src="https://cdn.icon-icons.com/icons2/2415/PNG/96/mongodb_original_wordmark_logo_icon_146425.png" alt="mongodb" width="40" heigth="50"/> </div>
 
 
 ## 🛠 Herramientas
