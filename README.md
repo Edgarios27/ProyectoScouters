@@ -1,6 +1,9 @@
 ## Equipo: 1 - SCOUTERS
 
-Scouters es una plataforma para scouts de fútbol. Su objetivo es generar informes en tiempo real de los jugadores mientras los ojeadores los observan en acción, y pueden obtener una media precisa para comparar nuevos talentos ojeados.
+Scouters es una plataforma para scouts de fútbol. Su objetivo es generar informes en tiempo real de los jugadores mientras los ojeadores los observan en acción, y pueden obtener una media precisa para comparar nuevos talentos ojeados. 
+Se ha implementado una autenticación de usuario. Para el front-end hemos utilizado React y para el back-end Node js. Para la base de datos hemos usado MongoDB (Express).
+Nuestro equipo ha trabajado bajo el marco Scrum con reuniones periódicas con el cliente, y se ha tenido en cuanta el UI de Scouz.
+
 
 ***
 
@@ -18,7 +21,7 @@ Scouters es una plataforma para scouts de fútbol. Su objetivo es generar inform
 ***
 <div>
 <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/>
-<img src="https://github.com/EqualWaveStudio/soundwave/assets/131855670/465e872f-6242-48b4-964c-7f5c3e749685" alt="jest" width="40" height="40"/>
+<img src="https://www.katk.dev/static/86f2f48b9b0dd900b4892f49f4bbab81/e4f06/logo.png" alt="thunder" width="50" height="45"/>
 <img src="https://w7.pngwing.com/pngs/512/824/png-transparent-visual-studio-code-hd-logo-thumbnail.png" alt="vscode" width="40" heigth="40"/>
 <img src="https://w7.pngwing.com/pngs/115/721/png-transparent-trello-social-icons-icon.png" alt="trello" width="40" heigth="40"/>
 <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> 
