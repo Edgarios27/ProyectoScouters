@@ -1,6 +1,6 @@
 ## Equipo: 1 - SCOUTERS
 
-Scouters es una plataforma para scouts de fútbol. Sirve para generar informes en tiempo real de los jugadores mientras los ojeadores los observan en acción, y pueden obtener una media precisa para comparar nuevos talentos ojeados.
+Scouters es una plataforma para scouts de fútbol. Su objetivo es generar informes en tiempo real de los jugadores mientras los ojeadores los observan en acción, y pueden obtener una media precisa para comparar nuevos talentos ojeados.
 
 ***
 
