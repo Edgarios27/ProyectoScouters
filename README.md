@@ -1,8 +1,8 @@
 ## Equipo: 1 - SCOUTERS
 
 Scouters es una plataforma para scouts de fútbol. Su objetivo es generar informes en tiempo real de los jugadores mientras los ojeadores los observan en acción, y pueden obtener una media precisa para comparar nuevos talentos ojeados. 
-Se ha implementado una autenticación de usuario. Para el front-end hemos utilizado React y para el back-end Node js. Para la base de datos hemos usado MongoDB (Express).
-Nuestro equipo ha trabajado bajo el marco Scrum con reuniones periódicas con el cliente, y se ha tenido en cuanta el UI de Scouz.
+Se ha implementado una autenticación de usuario para el registro y login. Para el front-end hemos utilizado el concepto Atomic Design con React, y para el back-end Node js. Para la base de datos hemos usado MongoDB (Mongoose y Express).
+Nuestro equipo ha trabajado bajo el marco Scrum con reuniones periódicas con el Stakeholder, y se ha tenido en cuenta el UI de Scouz.
 
 
 ***
@@ -56,8 +56,8 @@ Nuestro equipo ha trabajado bajo el marco Scrum con reuniones periódicas con el
 
 ## 👾 Desarrolladores
 ***
-- [Daniel Zafra](https://github.com/Danizetaeme) Developer
-- [Alejandro Mitjans](https://github.com/Alejandro9011) Developer
+- [Daniel Zafra](https://github.com/Danizetaeme) Product Owner
+- [Alejandro Mitjans](https://github.com/Alejandro9011) Scrum Master
 - [Edgar Ríos](https://github.com/Edgarios27) Developer
 - [Pablo Ledezma]() Developer
 - [Miguel Ángel Seiz](https://github.com/maseiz) Developer
