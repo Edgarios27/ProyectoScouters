@@ -49,8 +49,6 @@ Nuestro equipo ha trabajado bajo el marco Scrum con reuniones periódicas con el
 4. Para iniciar el servidor:
 - nodemon app
   
-5. Para correr los test:
-- npm test
 
 
 
