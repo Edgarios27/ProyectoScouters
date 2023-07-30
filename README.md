@@ -43,7 +43,7 @@ Nuestro equipo ha trabajado bajo el marco Scrum con reuniones periódicas con el
 2. Instalar las dependencias del front-end y back-end con el comando:
 - npm install
 
-3. Para que el proyecto inicie el cliente:
+3. Para iniciar el cliente:
 - npm start
 
 4. Para iniciar el servidor:
