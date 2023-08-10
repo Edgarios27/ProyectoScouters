@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d9c8796b.css",
+    "main.js": "/static/js/main.ec64d7f3.js",
+    "static/js/363.7894f92a.chunk.js": "/static/js/363.7894f92a.chunk.js",
+    "static/media/VideoFutbol1.mp4": "/static/media/VideoFutbol1.21f8b4777f2ca6c2d54b.mp4",
+    "static/media/futbol2.jpg": "/static/media/futbol2.7cbc51a3bb5a428aa868.jpg",
+    "static/media/EntrenadorFutbol.jpg": "/static/media/EntrenadorFutbol.5bc2a280dcdc361b2d33.jpg",
+    "static/media/Campo.jpg": "/static/media/Campo.9009a7ca6090b435660e.jpg",
+    "static/media/comparativo.jpg": "/static/media/comparativo.15739f3b0a31aca21d77.jpg",
+    "static/media/2.jpg": "/static/media/2.4a475f5bbd3024e2128c.jpg",
+    "static/media/1.jpg": "/static/media/1.e16dd244f391cf518c3d.jpg",
+    "index.html": "/index.html",
+    "main.d9c8796b.css.map": "/static/css/main.d9c8796b.css.map",
+    "main.ec64d7f3.js.map": "/static/js/main.ec64d7f3.js.map",
+    "363.7894f92a.chunk.js.map": "/static/js/363.7894f92a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d9c8796b.css",
+    "static/js/main.ec64d7f3.js"
+  ]
+}
